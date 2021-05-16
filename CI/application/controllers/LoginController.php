@@ -18,14 +18,14 @@ class LoginController extends CI_Controller {
 
   public function checkUser()
   {
-    $username = $this->input->post('InputUsername');
-    $password = $this->input->post('InputPassword');
+    $username = $this->input->post('username');
+    $password = $this->input->post('password');
     if ($this->adminModel->validateAdmin($username, $password)) {
-      redirect('AdminContoller');
+      redirect('AdminController');
     } else if ($this->KaryawanModel->checkKaryawan($username, $password)){
 			redirect('KaryawanController');
 		} else {
-			redirect('AdminController');
+			redirect('LoginController');
 		}
 	}
 }

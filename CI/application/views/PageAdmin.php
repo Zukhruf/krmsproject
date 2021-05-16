@@ -61,7 +61,34 @@
       </div>
       <!--List-->
       <div class="container-fluid" id="listContent">
-
+        <table class="table table-hover mt-5 table-custom">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">ID Karyawan</th>
+              <th scope="col">Nama Karyawan</th>
+              <th scope="col">Unit Kerja</th>
+              <th scope="col">No Telp</th>
+              <th scope="col">Jenis</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $i=1; ?>
+            <?php foreach ($dataResult as $dataKaryawan) : ?>
+              <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $dataKaryawan->id_user; ?></td>
+                <td><?php echo $dataKaryawan->username_karyawan; ?></td>
+                <td><?php echo $dataKaryawan->unit_kerja_karyawan ?></td>
+                <td><?php echo $dataKaryawan->no_telp_karyawan; ?></td>
+                <td><?php echo $dataKaryawan->jenis_kelamin ?></td>
+                <td><a href="<?php echo "AdminController/hapusKaryawan/".$dataKaryawan->id_user ?>"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
+              </tr>
+              <?php $i++; ?>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
       </div>
       <!--Modal Buat Karyawan-->
       <div class="modal fade" id="karyawanModal">

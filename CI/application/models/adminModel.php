@@ -57,7 +57,8 @@ class adminModel extends CI_Model
   public function readListKaryawan()
   {
     // code...
-    $query = $this->db->get('user');
+    $query = $this->db->get('karyawan');
+    return $query->result();
   }
 
   public function readKaryawan($username_user)
