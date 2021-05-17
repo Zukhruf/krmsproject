@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo base_url()."asset/CustomCSSJS/ModalJavascript.js"?>"></script>
+    <script type="text/javascript" src="<?php echo base_url()."asset/CustomCSSJS/disablingInput.js"?>"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url()."asset/CustomCSSJS/HeaderStyle.css"; ?>">
     <link rel="stylesheet" href="<?php echo base_url()."asset/CustomCSSJS/BodyCustomStyle.css"; ?>">
@@ -31,11 +32,11 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {Role}, {Username}
+                {Role}, <?php echo $this->session->userdata('username'); ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2"></i>Ubah Password</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url()."index.php/KaryawanController/logout"; ?>"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
               </ul>
             </li>
           </ul>
@@ -160,13 +161,42 @@
       </div>
       <!--List-->
       <div class="container-fluid" id="listContent">
-
+        <table class="table table-hover table-custom mt-5">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">ID Reimbursement</th>
+              <th scope="col">Nama Reimbursement</th>
+              <th scope="col">Tanggal Pembelian</th>
+              <th scope="col">Kategori Pembelian</th>
+              <th scope="col">Nominal Pembelian</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $i=1; ?>
+            <?php foreach ($reimbursementList as $dataReimbursement) : ?>
+              <tr>
+                <td><?php echo $i; ?></td>
+                <td><a href="<?php echo "KaryawanController/readReimbursement/".$dataReimbursement->id_reimbursement;?>"><?php echo $dataReimbursement->id_reimbursement; ?></a></td>
+                <td><?php echo $dataReimbursement->nama_reimbursement; ?></td>
+                <td><?php echo $dataReimbursement->tanggal_pembelian; ?></td>
+                <td><?php echo $dataReimbursement->jenis_reimbursement; ?></td>
+                <td><?php echo $dataReimbursement->jumlah_reimbursement; ?></td>
+                <td><?php echo $dataReimbursement->status_reimbursement; ?></td>
+                <td><a href="<?php echo "KaryawanController/deleteReimbursement/".$dataReimbursement->id_reimbursement; ?>"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
+              </tr>
+              <?php $i++; ?>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
       </div>
       <!--Modal-->
-      <div class="modal fade" id="reimbursementModal">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content rounded-1">
-            <form action="<?php echo base_url()."index.php/KaryawanController/createReimbursement";?>" method="post">
+      <form action="<?php echo base_url()."index.php/KaryawanController/createReimbursement/".$this->session->userdata('id_user');?>" method="post">
+        <div class="modal fade" id="reimbursementModal">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content rounded-1">
               <div class="modal-header" id="modalHeader">
                 <h5 class="modal-title ms-3">Buat Reimbursement</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -177,29 +207,30 @@
                     <div class="mb-3">
                       <label for="inputNamaReimbursement" class="col-sm-2 col-form-label">Nama Reimbursement</label>
                       <div class="col-sm">
-                        <input type="text" name="" value="" class="form-control" id="NamaReimbursement" placeholder="Masukkan nama reimbursement">
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="inputDeskripsiReimbursement" class="col-sm-2 col-form-label">Deskripsi Reimbursement</label>
-                      <div class="col-sm">
-                        <textarea name="" rows="6" class="form-control" id="DeskripsiReimbursement" placeholder="Isi deskripsi reimbursement"></textarea>
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="inputTanggalPembelian" class="col-sm-2 col-form-label">Tanggal Pengajuan</label>
-                      <div class="col-sm">
-                        <input type="date" name="" value="" class="form-control" id="TanggalPengajuan" placeholder="Masukkan tanggal">
+                        <input type="text" name="nama_reimbursement" value="" class="form-control" id="NamaReimbursement" placeholder="Masukkan nama reimbursement">
                       </div>
                     </div>
                     <div class="mb-3">
                       <label for="inputKategoriPengajuan" class="col-sm-2 col-form-label">Kategori Reimbursement</label>
                       <div class="col-sm">
-                        <select class="form-select" aria-label="Default select example" name="KategoriReimbursement">
+                        <select class="form-select" aria-label="Default select example" name="kategori_reimbursement">
                           <option value="Makanan">Makanan</option>
                           <option value="Kuota Internet">Kuota Internet</option>
-                          <option value="Inventaris">Inventaris</option>
+                          <option value="Inventaris">Barang Elektronik</option>
+                          <option value="Transportasi">Transportasi</option>
                         </select>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputDeskripsiReimbursement" class="col-sm-2 col-form-label">Deskripsi Reimbursement</label>
+                      <div class="col-sm">
+                        <textarea name="deskripsi_reimbursement" rows="6" class="form-control" id="DeskripsiReimbursement" placeholder="Isi deskripsi reimbursement"></textarea>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputTanggalPembelian" class="col-sm-2 col-form-label">Tanggal Pembelian</label>
+                      <div class="col-sm">
+                        <input type="date" name="tanggal_pembelian" value="" class="form-control" id="TanggalPembelian" placeholder="Masukkan tanggal">
                       </div>
                     </div>
                   </div>
@@ -207,23 +238,23 @@
                     <div class="mb-3">
                       <label for="inputNominalPembelian" class="col-sm-2 col-form-label">Nominal Pembelian</label>
                       <div class="col-sm">
-                        <input type="text" name="" value="" class="form-control" id="NominalPembelian" placeholder="Masukkan nominal pembelian">
+                        <input type="text" name="nominal_pembelian" value="" class="form-control" id="NominalPembelian" placeholder="Masukkan nominal pembelian">
                       </div>
                     </div>
                     <div class="mb-3" id="inputFotoCustom">
                       <label for="formFile" class="col-sm-2 col-form-label">Upload Bukti</label>
                       <div class="col-sm">
-                        <input class="form-control" type="file" id="formFilePhoto1" placeholder="Upload struk">
+                        <input class="form-control" type="file" id="formFilePhoto1" placeholder="Upload struk" name="filePhoto1">
                       </div>
                     </div>
                     <div class="mb-3" id="inputFotoCustom">
                       <div class="col-sm">
-                        <input class="form-control" type="file" id="formFilePhoto2" placeholder="Upload struk">
+                        <input class="form-control" type="file" id="formFilePhoto2" placeholder="Upload struk" name="filePhoto2">
                       </div>
                     </div>
                     <div class="mb-3" id="inputFotoCustom">
                       <div class="col-sm">
-                        <input class="form-control" type="file" id="formFilePhoto3" placeholder="Upload struk">
+                        <input class="form-control" type="file" id="formFilePhoto3" placeholder="Upload struk" name="filePhoto3">
                       </div>
                     </div>
                   </div>
@@ -235,10 +266,10 @@
                   <button type="submit" class="btn btn-confirmation rounded btn-outline-primary me-2 mb-2 shadow" name="button"><i class="fas fa-check me-2"></i>Simpan</button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     <!--Footer-->
   </body>
 </html>

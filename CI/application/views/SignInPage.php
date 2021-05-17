@@ -24,11 +24,11 @@
         <h1 class="h3 mb-3 text-center" id="SignInText">Sign In</h1>
         <form action="<?php echo base_url().'index.php/LoginController/checkUser'; ?>" method="post">
           <div class="form-floating">
-            <input type="text" class="form-control" id="InputUsername">
+            <input type="text" class="form-control" id="username" name="username">
             <label for="inputUsername">Username</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="InputPassword">
+            <input type="password" class="form-control" id="password" name="password">
             <label for="InputPassword">Password</label>
           </div>
           <div class="checkbox mb-3">
