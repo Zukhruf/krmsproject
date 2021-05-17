@@ -142,3 +142,11 @@ body {
   border: 1px solid #F1F1F1;
   border-radius: 25px;
 }
+
+.modal {
+  overflow: auto !important;
+}
+
+.red-star {
+  color: #FF0000;
+}

@@ -31,11 +31,11 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {Role}, {Username}
+                {Role}, <?php echo $this->session->userdata('username'); ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" id="dropdownItemNavbar" href="#"><i class="fas fa-key me-2"></i>Ubah Password</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url()."index.php/AdminController/logout" ?>"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
               </ul>
             </li>
           </ul>
@@ -91,10 +91,10 @@
         </table>
       </div>
       <!--Modal Buat Karyawan-->
-      <div class="modal fade" id="karyawanModal">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content rounded-4">
-            <form class="" action="<?php echo base_url()."index.php/AdminController/createKaryawan" ?>" method="post">
+      <form class="" action="<?php echo base_url().'index.php/AdminController/createKaryawan'; ?>" method="post">
+        <div class="modal fade" id="karyawanModal">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content rounded-4">
               <div class="modal-header" id="modalHeader">
                 <h5 class="modal-title ms-3">Buat Karyawan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -103,48 +103,92 @@
                 <div class="d-flex">
                   <div class="container">
                     <div class="mb-3">
-                      <label for="inputNamaKaryawan" class="col-sm-2 col-form-label">Nama Karyawan</label>
-                      <div class="col-sm">
-                        <input type="text" name="" value="" class="form-control" id="NamaKaryawan" placeholder="Masukkan nama karyawan">
+                      <label for="IDKaryawan" class="col-md col-form-label">ID Karyawan <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <input type="text" name="id_karyawan" value="" class="form-control" id="IDKaryawan" placeholder="Masukkan ID karyawan">
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label for="inputUnitKerja" class="col-sm-2 col-form-label">Unit Kerja</label>
-                      <div class="col-sm">
-                        <input type="text" name="" value="" class="form-control" id="UnitKerja" placeholder="Masukkan unit kerja">
+                      <label for="NamaKaryawan" class="col-md col-form-label">Nama Karyawan <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <input type="text" name="nama_karyawan" value="" class="form-control" id="NamaKaryawan" placeholder="Masukkan nama karyawan">
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label for="inputEmailKaryawan" class="col-sm-2 col-form-label">No Telp Karyawan</label>
-                      <div class="col-sm">
-                        <input type="email" name="" value="" class="form-control" id="NoTelpKaryawan" placeholder="Masukkan no telp karyawan">
+                      <label for="UnitKerja" class="col-md col-form-label">Unit Kerja <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <select class="form-select" name="unit_kerja_karyawan" id="UnitKerja">
+                          <option value="COO">COO</option>
+                          <option value="CEO">CEO</option>
+                          <option value="CTO">CTO</option>
+                          <option value="Lead Finance">Lead Finance</option>
+                          <option value="Lead HR">Lead HR</option>
+                          <option value="Sales Representative">Sales Representative</option>
+                          <option value="Project Manager">Project Manager</option>
+                          <option value="Lead AI">Lead AI</option>
+                          <option value="Lead Software">Lead Software</option>
+                          <option value="Lead Annotator">Lead Annotator</option>
+                          <option value="AI Engineer">AI Engineer</option>
+                          <option value="AI Scientist">AI Scientist</option>
+                          <option value="Full Stack Engineer">Full Stack Engineer</option>
+                          <option value="Front End Engineer">Front End Engineer</option>
+                          <option value="Back End Engineer">Back End Engineer</option>
+                          <option value="Annotator">Annotator</option>
+                        </select>
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label for="inputRoleKaryawan" class="col-sm-2 col-form-label">Role Karyawan</label>
-                      <div class="col-sm">
-                        <input type="text" name="" value="" class="form-control" id="RoleKaryawan" placeholder="Masukkan role karyawan">
+                      <label for="NoTeleponKaryawan" class="col-md col-form-label">No Telepon <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <input type="text" name="no_telp_karyawan" value="" class="form-control" id="NoTeleponKaryawan" placeholder="Masukkan no telepon">
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label for="inputJenisKelaminKaryawan" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                      <div class="col-sm">
-                        <select class="form-select" aria-label="Default select example" name="JenisKelamin">
+                      <label for="TanggalLahir" class="col-md col-form-label">Tanggal Lahir <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <input type="date" name="tanggal_lahir" value="" id="TanggalLahir">
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="JenisKelamin" class="col-md col-form-label">Jenis Kelamin <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <select class="form-select" name="jenis_kelamin" id="JenisKelamin">
                           <option value="Laki-laki">Laki-laki</option>
                           <option value="Perempuan">Perempuan</option>
                         </select>
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label for="inputAlamatKaryawan" class="col-sm-2 col-form-label">Alamat Karyawan</label>
-                      <div class="col-sm">
-                        <input type="text" name="" value="" class="form-control" id="AlamatKaryawan" placeholder="Masukkan alamat karyawan">
+                      <label for="Alamat" class="col-md col-form-label">Alamat <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <textarea name="alamat_karyawan" id="Alamat" rows="6" cols="42"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div class="mb-3">
+                      <label for="EmailKaryawan" class="col-md col-form-label">Email <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <input type="text" name="email_karyawan" value="" class="form-control" id="EmailKaryawan" placeholder="Masukkan email">
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label for="inputTglLahirKaryawan" class="col-sm-2 col-form-label">Tanggal Lahir Karyawan</label>
-                      <div class="col-sm">
-                        <input type="text" name="" value="" class="form-control" id="TglLahirKaryawan" placeholder="Masukkan tanggal lahir karyawan">
+                      <label for="RoleKaryawan" class="col-md col-form-label">Role <span class="red-star">*</span></label>
+                      <select class="form-select" name="role_karyawan" id="RoleKaryawan">
+                        <option value="Karyawan">Karyawan</option>
+                        <option value="Finance">Finance</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="UsernameKaryawan" class="col-md col-form-label">Username <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <input type="text" name="username_karyawan" value="" class="form-control" id="UsernameKaryawan" placeholder="Masukkan username">
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="PasswordKaryawan" class="col-md col-form-label">Password <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <input type="text" name="password_karyawan" value="" class="form-control" id="PasswordKaryawan" placeholder="Masukkan password">
                       </div>
                     </div>
                   </div>
@@ -156,9 +200,9 @@
                   <button type="submit" class="btn btn-confirmation btn-outline-primary me-2 shadow mb-2 rounded" name="button"><i class="fas fa-check me-2"></i>Simpan</button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
   </body>
 </html>
