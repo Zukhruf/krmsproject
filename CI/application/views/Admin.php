@@ -93,7 +93,7 @@
           <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content rounded-4">
               <div class="modal-header" id="modalHeader">
-                <h5 class="modal-title ms-3">Buat Karyawan</h5>
+                <h5 class="modal-title ms-3">Buat Pengguna Baru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -102,16 +102,10 @@
                     <div class="mb-3">
                       <label for="RoleKaryawan" class="col-md col-form-label">Role <span class="red-star">*</span></label>
                       <select class="form-select" name="role_karyawan" id="RoleKaryawan" onchange="opsi(this)">
-                        <option value="Admin">Admin</option>
                         <option value="Karyawan">Karyawan</option>
                         <option value="Finance">Finance</option>
+                        <option value="Admin">Admin</option>
                       </select>
-                    </div>
-                    <div class="mb-3">
-                      <label for="IDKaryawan" class="col-md col-form-label">ID Karyawan <span class="red-star">*</span></label>
-                      <div class="col-md">
-                        <input type="text" name="id_karyawan" value="" class="form-control" id="IDKaryawan" placeholder="Masukkan ID karyawan">
-                      </div>
                     </div>
                     <div class="mb-3">
                       <label for="NamaKaryawan" class="col-md col-form-label">Nama Karyawan <span class="red-star">*</span></label>
