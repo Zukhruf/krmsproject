@@ -48,6 +48,13 @@ class AdminController extends CI_Controller
   {
     $this->adminModel->deleteKaryawan($id_karyawan);
   }
+
+  public function logout()
+  {
+    // code...
+    session_destroy();
+    redirect('LoginController');
+  }
 }
 
 

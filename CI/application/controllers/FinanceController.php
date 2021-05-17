@@ -23,6 +23,14 @@ class FinanceController extends CI_Controller
     // code...
     $this->FinanceModel->deleteReimbursement();
   }
+
+
+    public function logout()
+    {
+      // code...
+      session_destroy();
+      redirect('LoginController');
+    }
 }
 
 

@@ -52,6 +52,14 @@ class KaryawanController extends CI_Controller
   {
     // code...
   }
+
+
+    public function logout()
+    {
+      // code...
+      session_destroy();
+      redirect('LoginController');
+    }
 }
 
 

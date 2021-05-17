@@ -37,7 +37,7 @@ class FinanceModel extends CI_Model
     // code...
     $query = $this->db->get_where('finance', array('username_finance' => $username));
     if ($query->num_rows()>0) {
-      $this->session->set_userdata('username', $username);
+      $this->session->set_userdata('username_finance', $username);
       return TRUE;
     } else {
       return FALSE;
@@ -47,6 +47,7 @@ class FinanceModel extends CI_Model
   public function deleteReimbursement($id_reimbursement)
   {
     // code...
+    
   }
 }
 

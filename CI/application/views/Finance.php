@@ -31,11 +31,11 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {Role}, {Username}
+                {Role}, <?php echo $this->session->userdata('username_finance'); ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2"></i>Ubah Password</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url()."index.php/FinanceController/logout" ?>"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
               </ul>
             </li>
           </ul>
