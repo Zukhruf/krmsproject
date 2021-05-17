@@ -29,7 +29,6 @@
           </div>
           <div class="form-floating mb-3">
             <input type="password" class="form-control" id="password" name="password">
-            <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
             <label for="InputPassword">Password</label>
           </div>
           <div class="checkbox mb-3">
@@ -37,6 +36,7 @@
               <input type="checkbox" name="" value="remember me" id="rememberMe">
               Remember me
             </label>
+            <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
           </div>
           <button type="submit" class="w-100 btn btn-primary" id="btnLogin">Log In</button>
         </form>
