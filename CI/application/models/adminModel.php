@@ -13,7 +13,7 @@ class adminModel extends CI_Model
   //Check Admin
   public function validateAdmin($username, $password)
   {
-    $query = $this->db->get_where('admin', array('username' => $username));
+    $query = $this->db->get_where('user', array('username' => $username, 'role' => 'Admin'));
     if ($query->num_rows()>0) {
       $this->session->set_userdata('username', $username);
       return TRUE;
@@ -23,17 +23,18 @@ class adminModel extends CI_Model
   }
 
   //Create Karyawan
-  public function createKaryawan($dataCreateKaryawan)
+  public function createUser($dataCreateKaryawan)
   {
     // code...
     $this->db->insert('user', $dataCreateKaryawan);
   }
 
   //Delete Karyawan
-  public function deleteKaryawan($username_user)
+  public function deleteUser($username_user)
   {
     // code...
-    $this->db->delete('user', array('username_user' => $username_user));
+    $this->db->delete('user', array('id_user' => $username_user));
+    redirect('AdminController');
   }
 
   //Update Karyawan
@@ -49,14 +50,14 @@ class adminModel extends CI_Model
   }
 
   //Read List Karyawan
-  public function readListKaryawan()
+  public function readListUser()
   {
     // code...
-    $query = $this->db->get('karyawan');
+    $query = $this->db->get('user');
     return $query->result();
   }
 
-  public function readKaryawan($username_user)
+  public function readUser($id_user)
   {
     // code...
     $query = $this->db->get_where('user', array('username_user' => $username_user));
