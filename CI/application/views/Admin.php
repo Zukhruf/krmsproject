@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo base_url()."asset/CustomCSSJS/ModalJavascript.js"?>"></script>
+    <script type="text/javascript" src="<?php echo base_url()."asset/CustomCSSJS/disablingInput.js"?>"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url()."asset/CustomCSSJS/HeaderStyle.css"; ?>">
     <link rel="stylesheet" href="<?php echo base_url()."asset/CustomCSSJS/BodyCustomStyle.css"; ?>">
@@ -44,10 +45,10 @@
     </nav>
     <!--Body-->
     <div class="container-fluid ms-auto me-auto" id="bodyContent">
-      <h1 class="h3">Daftar Karyawan</h1>
+      <h1 class="h3">Daftar Pengguna</h1>
       <!--Button Upper-->
       <div class="d-flex" id="buttonContentUpper">
-        <button type="button" class="btn btn-outline-primary me-2 shadow mb-2 rounded" name="button" data-bs-toggle="modal" data-bs-target="#karyawanModal"><i class="fas fa-plus me-2"></i>Buat Karyawan</button>
+        <button type="button" class="btn btn-outline-primary me-2 shadow mb-2 rounded" name="button" data-bs-toggle="modal" data-bs-target="#karyawanModal"><i class="fas fa-plus me-2"></i>Buat Pengguna Baru</button>
         <button type="button" class="btn btn-outline-primary dropdown-toggle shadow mb-2 rounded" name="button" data-bs-toggle="dropdown"><i class="fas fa-filter me-2"></i>Filter</button>
         <button type="button" class="btn btn-outline-primary dropdown-toggle ms-auto shadow mb-2 rounded" name="button" data-bs-toggle="dropdown">Urut Berdasarkan</button>
         <ul class="dropdown-menu">
@@ -65,25 +66,21 @@
           <thead>
             <tr>
               <th scope="col">No</th>
-              <th scope="col">ID Karyawan</th>
-              <th scope="col">Nama Karyawan</th>
-              <th scope="col">Unit Kerja</th>
-              <th scope="col">No Telp</th>
-              <th scope="col">Jenis</th>
+              <th scope="col">ID User</th>
+              <th scope="col">Username</th>
+              <th scope="col">Role</th>
               <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <?php $i=1; ?>
-            <?php foreach ($dataResult as $dataKaryawan) : ?>
+            <?php foreach ($dataResult as $dataUser) : ?>
               <tr>
                 <td><?php echo $i; ?></td>
-                <td><?php echo $dataKaryawan->id_user; ?></td>
-                <td><?php echo $dataKaryawan->username_karyawan; ?></td>
-                <td><?php echo $dataKaryawan->unit_kerja_karyawan ?></td>
-                <td><?php echo $dataKaryawan->no_telp_karyawan; ?></td>
-                <td><?php echo $dataKaryawan->jenis_kelamin ?></td>
-                <td><a href="<?php echo "AdminController/hapusKaryawan/".$dataKaryawan->id_user ?>"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
+                <td><?php echo $dataUser->id_user; ?></td>
+                <td><?php echo $dataUser->username; ?></td>
+                <td><?php echo $dataUser->role; ?></td>
+                <td><a href="<?php echo "AdminController/hapusUser/".$dataUser->id_user; ?>"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
               </tr>
               <?php $i++; ?>
             <?php endforeach; ?>
@@ -91,7 +88,7 @@
         </table>
       </div>
       <!--Modal Buat Karyawan-->
-      <form class="" action="<?php echo base_url().'index.php/AdminController/createKaryawan'; ?>" method="post">
+      <form class="" action="<?php echo base_url().'index.php/AdminController/createUser'; ?>" method="post">
         <div class="modal fade" id="karyawanModal">
           <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content rounded-4">
@@ -102,6 +99,14 @@
               <div class="modal-body">
                 <div class="d-flex">
                   <div class="container">
+                    <div class="mb-3">
+                      <label for="RoleKaryawan" class="col-md col-form-label">Role <span class="red-star">*</span></label>
+                      <select class="form-select" name="role_karyawan" id="RoleKaryawan" onchange="opsi(this)">
+                        <option value="Admin">Admin</option>
+                        <option value="Karyawan">Karyawan</option>
+                        <option value="Finance">Finance</option>
+                      </select>
+                    </div>
                     <div class="mb-3">
                       <label for="IDKaryawan" class="col-md col-form-label">ID Karyawan <span class="red-star">*</span></label>
                       <div class="col-md">
@@ -171,13 +176,6 @@
                       <div class="col-md">
                         <input type="text" name="email_karyawan" value="" class="form-control" id="EmailKaryawan" placeholder="Masukkan email">
                       </div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="RoleKaryawan" class="col-md col-form-label">Role <span class="red-star">*</span></label>
-                      <select class="form-select" name="role_karyawan" id="RoleKaryawan">
-                        <option value="Karyawan">Karyawan</option>
-                        <option value="Finance">Finance</option>
-                      </select>
                     </div>
                     <div class="mb-3">
                       <label for="UsernameKaryawan" class="col-md col-form-label">Username <span class="red-star">*</span></label>

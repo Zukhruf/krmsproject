@@ -11,26 +11,15 @@ class KaryawanModel extends CI_Model
   }
 
   //Create REIMBURSEMENT
-  public function createReimbursement($id_user, $nama_reimbursement, $deskripsi_reimbursement,
-                                      $tgl_pengajuan, $kategori_reimbursement, $nominal_pembelian,
-                                      $foto_bukti1, $foto_bukti2, $foto_bukti3)
+  public function createReimbursement($dataReimbursement)
   {
     // code...
-    $data = array(
-      'id_user' => $id_user,
-      'nama_reimbursement' => $nama_reimbursement,
-      'jenis_reimbursement' => $kategori_reimbursement,
-      'deskripsi_reimbursement' => $deskripsi_reimbursement,
-      'tanggal_pengajuan' => $tgl_pengajuan,
-      'jumlah_reimbursement' => $nominal_pembelian,
-      'bukti_reimbursement' => $foto_bukti1,
-      'bukti_reimbursement2' => $foto_bukti2,
-      'bukti_reimbursement3' => $foto_bukti3
-    );
+    $this->db->insert('reimbursement', $dataReimbursement);
+    redirect('KaryawanController');
   }
 
   //Get 1 REIMBURSEMENT
-  public function readReimbursementListofKaryawan($id_user)
+  public function readReimbursementListFromKaryawan($id_user)
   {
     // code...
     $query = $this->db->get_where('reimbursement', array('id_user' => $id_user));
@@ -41,7 +30,8 @@ class KaryawanModel extends CI_Model
   public function deleteReimbursement($id_reimbursement)
   {
     // code...
-    $this->db->delete('reimbursement', array('id_reimbursement' => $id_reimbursement, 'id_user' => $id_user));
+    $this->db->delete('reimbursement', array('id_reimbursement' => $id_reimbursement));
+    redirect('KaryawanController');
   }
 
   //Update REIMBURSEMENT
@@ -50,16 +40,33 @@ class KaryawanModel extends CI_Model
     // code...
   }
 
+  public function readReimbursement($id_reimbursement)
+  {
+    // code...
+    $query = $this->db->get_where('reimbursement', array('id_reimbursement' => $id_reimbursement));
+    return $query->result();
+  }
+
   public function checkKaryawan($username, $password)
   {
     // code...
-    $query = $this->db->get_where('karyawan', array('username_karyawan' => $username));
+    $query = $this->db->get_where('user', array('username' => $username));
     if ($query->num_rows()>0) {
-      $this->session->set_userdata('username_karyawan', $username);
+      $this->session->set_userdata('username', $username);
       return TRUE;
     } else {
       return FALSE;
     }
+  }
+
+  public function getIDUser($username)
+  {
+    // code...
+    $this->db->select('id_user');
+    $this->db->where('username', $username);
+    $query = $this->db->get('user');
+    $return = $query->row_array();
+    return $return;
   }
 
 }

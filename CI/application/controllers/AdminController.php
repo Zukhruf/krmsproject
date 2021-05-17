@@ -12,11 +12,11 @@ class AdminController extends CI_Controller
 
   public function index()
   {
-    $result['dataResult'] = $this->adminModel->readListKaryawan();
+    $result['dataResult'] = $this->adminModel->readListUser();
     $this->load->view('Admin', $result);
   }
 
-  public function createKaryawan()
+  public function createUser()
   {
     // code...
     $id_karyawan = $this->input->post('id_karyawan');
@@ -32,7 +32,7 @@ class AdminController extends CI_Controller
     $password = $this->input->post('password_karyawan');
     $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
 
-    $dataCreateKaryawan =
+    $dataCreateUser =
       array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan,
         'unit_kerja_karyawan' => $unit_kerja_karyawan, 'no_telp_karyawan' => $no_telp_karyawan,
         'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin,
@@ -41,12 +41,31 @@ class AdminController extends CI_Controller
         'password_karyawan' => $password_karyawan
     );
 
-    $this->adminModel->createKaryawan($dataCreateKaryawan);
+    if ($role_karyawan == 'Admin') {
+      $dataCreateUser =
+        array('role' => $role_karyawan,
+              'username' => $username_karyawan,
+              'password' => $password_karyawan
+        );
+    } else if ($role_karyawan == 'Karyawan'){
+      $dataCreateUser =
+        array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan,
+              'unit_kerja_karyawan' => $unit_kerja_karyawan,
+              'no_telp_karyawan' => $no_telp_karyawan,
+              'jenis_kelamin' => $jenis_kelamin,
+              'alamat_karyawan' => $alamat_karyawan,
+              'tanggal_lahir' => $tanggal_lahir
+      );
+    } else if ($role_karyawan == 'Finance'){
+
+    }
+
+    $this->adminModel->createUser($dataCreateUser);
   }
 
-  public function hapusKaryawan($id_karyawan)
+  public function hapusUser($id_user)
   {
-    $this->adminModel->deleteKaryawan($id_karyawan);
+    $this->adminModel->deleteUser($id_user);
   }
 
   public function logout()

@@ -31,11 +31,11 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {Role}, {Username}
+                {Role}, <?php echo $this->session->userdata('username');?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2"></i>Ubah Password</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url()."index.php/KaryawanController/logout"; ?>"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
               </ul>
             </li>
           </ul>
@@ -49,7 +49,7 @@
         <button type="button" name="button" class="btn me-1 mb-1 rounded" id="btnBack"><i class="fas fa-arrow-left"></i></button>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb ms-2 mt-2" id="breadcrumbs">
-            <li class="breadcrumb-item"><a href="PageDashboardKaryawan.php">Daftar Reimbursement</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url()."index.php/KaryawanController" ?>">Daftar Reimbursement</a></li>
             <li class="breadcrumb-item active" aria-current="page">{IDReimbursement}</li>
           </ol>
         </nav>
@@ -64,17 +64,19 @@
           </div>
           <div class="d-flex">
             <div class="container-fluid">
-              <p>ID Reimbursement     : </p>
-              <p>Nama Pembelian       : </p>
-              <p>Tanggal Pengajuan    : </p>
-              <p>Kategori Pembelian   : </p>
-              <p>Deskripsi Pembelian  : </p>
-              <p>Tanggal pembelian    : </p>
-              <p>Status               : </p>
+              <?php foreach ($detailReimbursement as $detail) : ?>
+                <p>ID Reimbursement     : <?php echo $detail->id_reimbursement; ?></p>
+                <p>Nama Reimbursement   : <?php echo $detail->nama_reimbursement; ?></p>
+                <p>Tanggal Pengajuan    : <?php echo $detail->tanggal_pengajuan; ?></p>
+                <p>Kategori Pembelian   : <?php echo $detail->jenis_reimbursement; ?></p>
+                <p>Deskripsi Pembelian  : <?php echo $detail->deskripsi_reimbursement; ?></p>
+                <p>Tanggal pembelian    : <?php echo $detail->tanggal_pembelian; ?></p>
+                <p>Status               : <?php echo $detail->status_reimbursement; ?></p>
+              <?php endforeach; ?>
             </div>
             <div class="container-fluid">
-              <p>Nominal pembelian    : </p>
-              <p>Bukti </p>
+              <p>Nominal pembelian    : <?php  ?></p>
+              <p>Bukti <?php  ?></p>
             </div>
           </div>
         </div>
