@@ -28,7 +28,7 @@
             <label for="inputUsername">Username</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" id="password" name="password">
+            <input type="password" class="form-control" id="password" name="password">
             <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
             <label for="InputPassword">Password</label>
           </div>
