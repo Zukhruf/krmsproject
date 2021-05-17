@@ -17,6 +17,12 @@ class FinanceController extends CI_Controller
     $data['reimbursements'] = $this->FinanceModel->readListReimbursement();
     $this->load->view('Finance', $data);
   }
+
+  public function hapusReimbursement($id_reimbursement)
+  {
+    // code...
+    $this->FinanceModel->deleteReimbursement();
+  }
 }
 
 

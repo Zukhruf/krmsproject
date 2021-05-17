@@ -19,14 +19,14 @@ class FinanceModel extends CI_Model
   }
 
   //Edit Reimbursement
-  public function editReimbursement($value='')
+  public function editReimbursement($id_reimbursement)
   {
     // code...
     //where id =?
   }
 
   //Update Status REIMBURSEMENT
-  public function updateStatusReimbursement($value='')
+  public function updateStatusReimbursement($id_reimbursement)
   {
     // code...
     //where id =?
@@ -44,6 +44,10 @@ class FinanceModel extends CI_Model
     }
   }
 
+  public function deleteReimbursement($id_reimbursement)
+  {
+    // code...
+  }
 }
 
 

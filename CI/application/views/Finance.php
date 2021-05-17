@@ -185,7 +185,7 @@
                 <td><?php echo $reimbursement->jenis_reimbursement; ?></td>
                 <td><?php echo $reimbursement->jumlah_reimbursement; ?></td>
                 <td><?php echo $reimbursement->status_reimbursement; ?></td>
-                <td><a href="<?php echo "AdminController/hapusKaryawan/".$reimbursement->id_reimbursement; ?>"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
+                <td><a href="<?php echo "FinanceController/hapusKaryawan/".$reimbursement->id_reimbursement; ?>"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
               </tr>
               <?php $i++; ?>
             <?php endforeach; ?>

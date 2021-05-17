@@ -30,10 +30,10 @@ class AdminController extends CI_Controller
     $role_karyawan = $this->input->post('role_karyawan');
     $username_karyawan = $this->input->post('username_karyawan');
     $password = $this->input->post('password_karyawan');
-    $password_karyawan = pasword_hash($password, PASSWORD_DEFAULT);
+    $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
 
     $dataCreateKaryawan =
-      array('id_karyawan' => $id_karyawan, 'nama_karyawan' => $nama_karyawan,
+      array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan,
         'unit_kerja_karyawan' => $unit_kerja_karyawan, 'no_telp_karyawan' => $no_telp_karyawan,
         'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin,
         'alamat_karyawan' => $alamat_karyawan, 'email_karyawan' => $email_karyawan,
@@ -46,7 +46,7 @@ class AdminController extends CI_Controller
 
   public function hapusKaryawan($id_karyawan)
   {
-    $this->adminModel->deletKaryawan($id_karyawan);
+    $this->adminModel->deleteKaryawan($id_karyawan);
   }
 }
 
