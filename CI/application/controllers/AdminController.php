@@ -30,7 +30,7 @@ class AdminController extends CI_Controller
     $role_karyawan = $this->input->post('role_karyawan');
     $username_karyawan = $this->input->post('username_karyawan');
     $password = $this->input->post('password_karyawan');
-    $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
+    
 
     $dataCreateUser =
       array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan,
