@@ -22,8 +22,10 @@ class LoginController extends CI_Controller {
     $password = $this->input->post('password');
     if ($this->adminModel->validateAdmin($username, $password)) {
       redirect('AdminController');
-    } else if ($this->KaryawanModel->checkKaryawan($username, $password)){
+    } else if ($this->KaryawanModel->checkKaryawan($username, $password)) {
 			redirect('KaryawanController');
+		} else if ($this->FinanceModel->validateFinance($username)) {
+			redirect('FinanceController');
 		} else {
 			redirect('LoginController');
 		}

@@ -160,13 +160,17 @@
       </div>
       <!--List-->
       <div class="container-fluid" id="listContent">
+        <table class="table table-hover table-custom mt-5">
+          <thead>
 
+          </thead>
+        </table>
       </div>
       <!--Modal-->
-      <div class="modal fade" id="reimbursementModal">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content rounded-1">
-            <form action="<?php echo base_url()."index.php/KaryawanController/createReimbursement";?>" method="post">
+      <form action="<?php echo base_url()."index.php/KaryawanController/createReimbursement";?>" method="post">
+        <div class="modal fade" id="reimbursementModal">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content rounded-1">
               <div class="modal-header" id="modalHeader">
                 <h5 class="modal-title ms-3">Buat Reimbursement</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -235,10 +239,10 @@
                   <button type="submit" class="btn btn-confirmation rounded btn-outline-primary me-2 mb-2 shadow" name="button"><i class="fas fa-check me-2"></i>Simpan</button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     <!--Footer-->
   </body>
 </html>

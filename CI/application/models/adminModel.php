@@ -23,15 +23,10 @@ class adminModel extends CI_Model
   }
 
   //Create Karyawan
-  public function createKaryawan($username_user, $password_user, $role_user)
+  public function createKaryawan($dataCreateKaryawan)
   {
     // code...
-    $data = array(
-      'username_user' => $username_user,
-      'password_user' => $password_user,
-      'role_user' => $role_user
-    );
-    $this->db->insert('user', $data);
+    $this->db->insert('user', $dataCreateKaryawan);
   }
 
   //Delete Karyawan
@@ -66,8 +61,5 @@ class adminModel extends CI_Model
     // code...
     $query = $this->db->get_where('user', array('username_user' => $username_user));
   }
-
 }
-
-
 ?>

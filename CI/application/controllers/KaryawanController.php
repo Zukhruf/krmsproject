@@ -14,10 +14,12 @@ class KaryawanController extends CI_Controller
   public function index()
   {
     // code...
-    $this->load->view('PageDashboardKaryawan');
+    $session = $this->session->userdata('username_karyawan');
+    $result['reimbursementList'] = $this->KaryawanModel->readReimbursementListofKaryawan($session);
+    $this->load->view('Karyawan', $result);
   }
 
-  public function createReimbursement($id_user)
+  public function createReimbursement()
   {
     // code...
     $id_user;

@@ -11,9 +11,11 @@ class FinanceModel extends CI_Model
   }
 
   //Read All List REIMBURSEMENT from All Karyawan
-  public function readListAllReimbursement($value='')
+  public function readListReimbursement()
   {
     // code...
+    $query = $this->db->get('reimbursement');
+    return $query->result();
   }
 
   //Edit Reimbursement
@@ -30,7 +32,18 @@ class FinanceModel extends CI_Model
     //where id =?
   }
 
-  
+  public function validateFinance($username)
+  {
+    // code...
+    $query = $this->db->get_where('finance', array('username_finance' => $username));
+    if ($query->num_rows()>0) {
+      $this->session->set_userdata('username', $username);
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+
 }
 
 

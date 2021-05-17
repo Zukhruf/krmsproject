@@ -29,25 +29,19 @@ class KaryawanModel extends CI_Model
     );
   }
 
-  //Get All List REIMBURSEMENT
-  public function readListReimbursement()
-  {
-    // code...
-    $query = $this->db->get('reimbursement');
-  }
-
   //Get 1 REIMBURSEMENT
-  public function readReimbursement($id_reimbursement, $id_user)
+  public function readReimbursementListofKaryawan($id_user)
   {
     // code...
-    $query = $this->db->get_where('reimbursement', array('id_reimbursement' => $id_reimbursement, 'id_user' => $id_user));
+    $query = $this->db->get_where('reimbursement', array('id_user' => $id_user));
+    return $query->result();
   }
 
   //Delete REIMBURSEMENT
   public function deleteReimbursement($id_reimbursement)
   {
     // code...
-    $query = $this->db->delete('reimbursement', array('id_reimbursement' => $id_reimbursement, 'id_user' => $id_user));
+    $this->db->delete('reimbursement', array('id_reimbursement' => $id_reimbursement, 'id_user' => $id_user));
   }
 
   //Update REIMBURSEMENT
