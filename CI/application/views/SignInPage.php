@@ -29,8 +29,8 @@
           </div>
           <div class="form-floating mb-3">
             <input type="password" class="form-control" id="password" name="password">
-            <label for="InputPassword">Password</label>
             <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            <label for="InputPassword">Password</label>
           </div>
           <div class="checkbox mb-3">
             <label>
@@ -43,4 +43,15 @@
       </main>
     </body>
   </div>
+  <script>
+	$(".toggle-password").click(function() {
+		$(this).toggleClass("fa-eye fa-eye-slash");
+		var input = $($(this).attr("toggle"));
+		if (input.attr("type") == "password") {
+			input.attr("type", "text");
+		} else {
+			input.attr("type", "password");
+		}
+	});
+</script>
 </html>
