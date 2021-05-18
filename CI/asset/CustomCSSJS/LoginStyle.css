@@ -46,8 +46,6 @@ html, body {
   border-color: #FE7B00
 }
 .icon-sec{
-  position:absolute;
-  top:0;
-  bottom:3;
-  width:20px;
+  left:auto;
+  right:10px;
 }
