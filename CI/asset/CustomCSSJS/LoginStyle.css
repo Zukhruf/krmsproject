@@ -48,5 +48,6 @@ html, body {
 
 .field-icon {
   display: flex;
+  z-index: 2;
   color:#fe7b00;
 }
