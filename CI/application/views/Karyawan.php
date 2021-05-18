@@ -176,6 +176,7 @@
           </thead>
           <tbody>
             <?php $i=1; ?>
+            <?php $id_reimbursement_selected; ?>
             <?php foreach ($reimbursementList as $dataReimbursement) : ?>
               <tr>
                 <td><?php echo $i; ?></td>
@@ -185,7 +186,7 @@
                 <td><?php echo $dataReimbursement->jenis_reimbursement; ?></td>
                 <td><?php echo $dataReimbursement->jumlah_reimbursement; ?></td>
                 <td><?php echo $dataReimbursement->status_reimbursement; ?></td>
-                <td><a href="<?php echo "KaryawanController/deleteReimbursement/".$dataReimbursement->id_reimbursement; ?>"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
+                <td><a href="<?php $id_reimbursement_selected = $dataReimbursement->id_reimbursement; ?>" data-bs-toggle="modal" data-bs-target="#modalConfirmDelete"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
               </tr>
               <?php $i++; ?>
             <?php endforeach; ?>
@@ -270,6 +271,21 @@
           </div>
         </div>
       </form>
+      <!--Modal Alert-->
+      <div class="modal fade" id="modalConfirmDelete">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content rounded-4">
+            <div class="modal-body mt-2" id="confirmAction">
+              <p class="text-centered h5">Anda yakin ingin menghapus reimbursement?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-confirmation btn-outline-primary ms-auto me-2 shadow mb-2 rounded" data-bs-dismiss="modal" name="button"><i class="fas fa-times me-2"></i>BATAL</button>
+              <a href="<?php echo "KaryawanController/deleteReimbursement/".$id_reimbursement_selected; ?>"><button type="button" class="btn btn-confirmation btn-outline-primary me-2 shadow mb-2 rounded" name="button"><i class="fas fa-check me-2"></i>YA, LANJUTKAN</button></a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <!--Footer-->
   </body>
 </html>
