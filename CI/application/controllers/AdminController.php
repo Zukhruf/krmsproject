@@ -56,7 +56,9 @@ class AdminController extends CI_Controller
               'tanggal_lahir' => $tanggal_lahir
       );
     } else if ($role_karyawan == 'Finance'){
-
+      $dataCreateUser =
+        array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan
+        )
     }
 
     $this->adminModel->createUser($dataCreateUser);
