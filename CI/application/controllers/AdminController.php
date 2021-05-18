@@ -38,7 +38,7 @@ class AdminController extends CI_Controller
     );
 
     $dataCreateKaryawan =
-      array('nama_karyawan' => $nama_karyawan,
+      array('id_user'=> $q,'nama_karyawan' => $nama_karyawan,
       'unit_kerja_karyawan' => $unit_kerja_karyawan, 'no_telp_karyawan' => $no_telp_karyawan,
       'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin,
       'alamat_karyawan' => $alamat_karyawan, 'email_karyawan' => $email_karyawan
