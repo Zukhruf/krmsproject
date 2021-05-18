@@ -43,6 +43,7 @@
       </main>
     </body>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script>
 	$(".toggle-password").click(function() {
 		$(this).toggleClass("fa-eye fa-eye-slash");
