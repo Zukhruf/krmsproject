@@ -45,8 +45,11 @@ html, body {
   background-color: #FE7B00;
   border-color: #FE7B00
 }
-
-.field-icon {
-  margin-top: 3px;
-  margin-bottom: 3px;
+.icon-sec{
+  position:absolute;
+  top:0;
+  left:10px;
+  bottom:0;
+  background:red;
+  width:20px;
 }
