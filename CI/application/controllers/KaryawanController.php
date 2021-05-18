@@ -9,6 +9,13 @@ class KaryawanController extends CI_Controller
   {
     parent::__construct();
     $this->load->model('KaryawanModel');
+
+    $config['upload_path'] = './uploads/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']     = '100';
+    $config['max_width'] = '1024';
+    $config['max_height'] = '768';
+    $this->load->library('upload', $config);
   }
 
   public function index()
@@ -33,6 +40,11 @@ class KaryawanController extends CI_Controller
     $foto_bukti1 = $this->input->post('filePhoto1');
     $foto_bukti2 = $this->input->post('filePhoto2');
     $foto_bukti3 = $this->input->post('filePhoto3');
+
+    $photo_bukti1 = $this->upload->data();
+    $photo1 = $photo_bukti1['file_name'];
+    echo $photo1;
+    print_r($photo1);
 
     $dataReimbursement = array('id_user' => $id_user,
       'nama_reimbursement' => $nama_reimbursement, 'jenis_reimbursement' => $kategori_reimbursement,
@@ -62,7 +74,7 @@ class KaryawanController extends CI_Controller
     $result['detailReimbursement'] = $this->KaryawanModel->readReimbursement($id_reimbursement);
     $this->load->view('DetailReimbursement', $result);
   }
-  
+
   public function logout()
   {
     // code...

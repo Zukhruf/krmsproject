@@ -138,7 +138,6 @@
             </div>
           </div>
           <div class="d-flex">
-
           </div>
           <li><hr class="dropdown-divider"></li>
           <!--Button Bawah Filter-->
@@ -194,7 +193,7 @@
         </table>
       </div>
       <!--Modal-->
-      <form action="<?php echo base_url()."index.php/KaryawanController/createReimbursement/".$this->session->userdata('id_user');?>" method="post">
+      <form action="<?php echo base_url()."index.php/KaryawanController/createReimbursement/".$this->session->userdata('id_user');?>" method="post" enctype="multipart/form-data">
         <div class="modal fade" id="reimbursementModal">
           <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content rounded-1">
