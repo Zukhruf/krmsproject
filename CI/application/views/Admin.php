@@ -81,7 +81,23 @@
                 <td><?php echo $dataUser->id_user; ?></td>
                 <td><?php echo $dataUser->username; ?></td>
                 <td><?php echo $dataUser->role; ?></td>
-                <td><a href="<?php $id_user_selected = $dataUser->id_user;?>" data-bs-toggle="modal" data-bs-target="#modalConfirmDelete"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
+                <td><a href="<?php echo $id_user_selected = $dataUser->id_user; ?>" data-bs-toggle="modal" data-bs-target="#modalConfirmDelete"><i class="fa fa-trash-alt trash-button" aria-hidden="true"></i></a></td>
+                <!--Modal Alert Hapus-->
+                  <div class="modal fade" id="modalConfirmDelete">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                      <div class="modal-content rounded-4">
+                        <div class="modal-body" id="confirmAction">
+                          <p class="text-centered h5">Anda yakin ingin menghapus karyawan?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <div class="d-flex">
+                            <button type="button" class="btn btn-confirmation btn-outline-primary ms-auto me-2 shadow mb-2 rounded" data-bs-dismiss="modal" name="button"><i class="fas fa-times me-2"></i>BATAL</button>
+                            <a href="<?php echo "AdminController/hapusUser/".$id_user_selected; ?>"><button type="button" class="btn btn-confirmation btn-outline-primary me-2 shadow mb-2 rounded" name="button"><i class="fas fa-check me-2"></i>YA, LANJUTKAN</button></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+      </div>
               </tr>
               <?php $i++; ?>
             <?php endforeach; ?>
@@ -203,37 +219,6 @@
           </div>
         </div>
       </form>
-      <!--Modal Alert Hapus-->
-      <div class="modal fade" id="modalConfirmDelete">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content rounded-4">
-            <div class="modal-body" id="confirmAction">
-              <p class="text-centered h5">Anda yakin ingin menghapus karyawan?</p>
-            </div>
-            <div class="modal-footer">
-              <div class="d-flex">
-                <button type="button" class="btn btn-confirmation btn-outline-primary ms-auto me-2 shadow mb-2 rounded" data-bs-dismiss="modal" name="button"><i class="fas fa-times me-2"></i>BATAL</button>
-                <a href="<?php echo "AdminController/hapusUser/".$id_user_selected; ?>"><button type="button" class="btn btn-confirmation btn-outline-primary me-2 shadow mb-2 rounded" name="button"><i class="fas fa-check me-2"></i>YA, LANJUTKAN</button></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Modal Alert Create Karyawan-->
-      <div class="modal fade" id="modalConfirmDelete">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content rounded-4">
-            <div class="modal-body" id="confirmAction">
-              <p class="text-centered h5">Anda yakin ingin menghapus karyawan?</p>
-            </div>
-            <div class="modal-footer">
-              <div class="d-flex">
-                <button type="button" class="btn btn-confirmation btn-outline-primary ms-auto me-2 shadow mb-2 rounded" data-bs-dismiss="modal" name="button"><i class="fas fa-times me-2"></i>BATAL</button>
-                <a href="<?php echo "AdminController/hapusUser/".$id_user_selected; ?>"><button type="button" class="btn btn-confirmation btn-outline-primary me-2 shadow mb-2 rounded" name="button"><i class="fas fa-check me-2"></i>YA, LANJUTKAN</button></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    
   </body>
 </html>

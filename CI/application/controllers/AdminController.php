@@ -65,6 +65,7 @@ class AdminController extends CI_Controller
   public function hapusUser($id_user)
   {
     $this->adminModel->deleteUser($id_user);
+    redirect('AdminController');
   }
 
   public function logout()
