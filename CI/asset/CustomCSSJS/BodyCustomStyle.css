@@ -150,3 +150,8 @@ body {
 .red-star {
   color: #FF0000;
 }
+
+.field-icon {
+  z-index: 2;
+  color:#fe7b00;
+}
