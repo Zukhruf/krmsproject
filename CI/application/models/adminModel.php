@@ -22,11 +22,25 @@ class adminModel extends CI_Model
     }
   }
 
-  //Create Karyawan
+  //Create user Karyawan, Finance, Admin
   public function createUser($dataCreateUser)
   {
     // code...
     $this->db->insert('user', $dataCreateUser);
+  }
+  
+  //Create Karyawan
+  public function createUser($dataCreateKaryawan)
+  {
+    // code...
+    $this->db->insert('karyawan', $dataCreateKaryawan);
+  }
+
+  //Create Finance
+  public function createUser($dataCreateFinance)
+  {
+    // code...
+    $this->db->insert('finance', $dataCreateFinance);
   }
 
   //Delete Karyawan
@@ -34,6 +48,8 @@ class adminModel extends CI_Model
   {
     // code...
     $this->db->delete('user', array('id_user' => $username_user));
+    $this->db->delete('karyawan', array('id_user' => $username_user));
+    $this->db->delete('finance', array('id_user' => $username_user));
     redirect('AdminController');
   }
 

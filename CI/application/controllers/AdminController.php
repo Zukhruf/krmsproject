@@ -32,38 +32,35 @@ class AdminController extends CI_Controller
     $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
 
     $dataCreateUser =
+      array(
+        'role_karyawan' => $role_karyawan,
+        'password_karyawan' => $password_karyawan,'username' => $username_karyawan
+    );
+
+    $dataCreateKaryawan =
       array('nama_karyawan' => $nama_karyawan,
-        'unit_kerja_karyawan' => $unit_kerja_karyawan, 'no_telp_karyawan' => $no_telp_karyawan,
-        'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin,
-        'alamat_karyawan' => $alamat_karyawan,
-        'role_karyawan' => $role_karyawan, 'email_karyawan' => $email_karyawan,
-        'password_karyawan' => $password_karyawan
+      'unit_kerja_karyawan' => $unit_kerja_karyawan, 'no_telp_karyawan' => $no_telp_karyawan,
+      'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin,
+      'alamat_karyawan' => $alamat_karyawan, 'email_karyawan' => $email_karyawan
+    );
+
+    $dataCreateFinance =
+      array('nama_karyawan' => $nama_karyawan
     );
 
     if ($role_karyawan == 'Admin') {
-      $dataCreateUser =
-        array('role' => $role_karyawan,
-              'username' => $username_karyawan,
-              'password' => $password_karyawan
-        );
+      $dataCreateUser;
     } else if ($role_karyawan == 'Karyawan'){
-      $dataCreateUser =
-        array('nama_karyawan' => $nama_karyawan,
-              'unit_kerja_karyawan' => $unit_kerja_karyawan,
-              'no_telp_karyawan' => $no_telp_karyawan,
-              'jenis_kelamin' => $jenis_kelamin,
-              'alamat_karyawan' => $alamat_karyawan,
-              'tanggal_lahir' => $tanggal_lahir
-      );
+      $dataCreateUser;
+      $dataCreateKaryawan;
     } else if ($role_karyawan == 'Finance'){
-      $dataCreateUser =
-        array('role' => $role_karyawan,
-        'username' => $username_karyawan,
-        'password' => $password_karyawan
-      );
+      $dataCreateUser;
+      $dataCreateFinance;
     }
 
     $this->adminModel->createUser($dataCreateUser);
+    $this->adminModel->createUser($dataCreateKaryawan);
+    $this->adminModel->createUser($dataCreateFinance);
   }
 
   public function hapusUser($id_user)
