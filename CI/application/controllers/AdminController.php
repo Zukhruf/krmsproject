@@ -30,7 +30,7 @@ class AdminController extends CI_Controller
     $username_karyawan = $this->input->post('username_karyawan');
     $password = $this->input->post('password_karyawan');
     $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
-    $q= "SELECT max(id_user) from USER WHERE role = '$role_karyawan'";
+    $q= "SELECT max(id_user) from USER WHERE role ='".$role_karyawan."'";
     $query = $this->db->query($q);
 
     $dataCreateUser =
