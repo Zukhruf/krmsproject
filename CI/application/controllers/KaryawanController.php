@@ -54,6 +54,7 @@ class KaryawanController extends CI_Controller
   {
     // code...
     $this->KaryawanModel->deleteReimbursement($id_reimbursement);
+    redirect('KaryawanController');
   }
 
   public function readReimbursement($id_reimbursement)

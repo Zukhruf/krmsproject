@@ -22,7 +22,7 @@ class KaryawanModel extends CI_Model
   public function readReimbursementListFromKaryawan($id_user)
   {
     // code...
-    $query = $this->db->get_where('reimbursement', array('id_user' => $id_user));
+    $query = $this->db->get_where('reimbursement', array('id_user' => $id_user, 'is_deleted' => 0));
     return $query->result();
   }
 
@@ -30,8 +30,9 @@ class KaryawanModel extends CI_Model
   public function deleteReimbursement($id_reimbursement)
   {
     // code...
-    $this->db->delete('reimbursement', array('id_reimbursement' => $id_reimbursement));
-    redirect('KaryawanController');
+    $d = array('is_deleted' => 1);
+    $this->db->where('id_reimbursement', $id_reimbursement);
+    $this->db->update('reimbursement', $d);
   }
 
   //Update REIMBURSEMENT
