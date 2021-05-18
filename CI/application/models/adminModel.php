@@ -12,8 +12,8 @@ class adminModel extends CI_Model
 
   //Check Admin
   public function validateAdmin($username, $password)
-  {
-    $query = $this->db->get_where('user', array('username' => $username, 'role' => 'Admin'));
+  { $d = array('username' => $username, 'role' => 'Admin', 'is_deleted' => 0 );
+    $query = $this->db->get_where('user', $d);
     if ($query->num_rows()>0) {
       $this->session->set_userdata('username', $username);
       return TRUE;
@@ -27,32 +27,28 @@ class adminModel extends CI_Model
   {
     // code...
     $this->db->insert('user', $dataCreateUser);
-    redirect('AdminController');
   }
 
   public function createUser2($dataCreateKaryawan)
   {
     // code...
     $this->db->insert('karyawan', $dataCreateKaryawan);
-    redirect('AdminController');
   }
 
   public function createUser3($dataCreateFinance)
   {
     // code...
     $this->db->insert('finance', $dataCreateFinance);
-    redirect('AdminController');
   }
-  
+
 
   //Delete Karyawan
-  public function deleteUser($username_user)
+  public function deleteUser($id_user)
   {
     // code...
-    $this->db->delete('user', array('id_user' => $username_user));
-    $this->db->delete('karyawan', array('id_user' => $username_user));
-    $this->db->delete('finance', array('id_user' => $username_user));
-    redirect('AdminController');
+    $d = array('is_deleted' => 1);
+    $this->db->where('id_user', $id_user);
+    $this->db->update('user', $d);
   }
 
   //Update Karyawan
@@ -63,7 +59,7 @@ class adminModel extends CI_Model
               'password_user' => $password_user,
               'role_user' => $role_user
     );
-    $this->db->where('username_user', $username_user);
+    $this->db->where('id_user', $username_user);
     $this->db->update('user', $data);
   }
 
@@ -71,7 +67,8 @@ class adminModel extends CI_Model
   public function readListUser()
   {
     // code...
-    $query = $this->db->get('user');
+    $q = "SELECT * FROM user WHERE is_deleted = 0";
+    $query = $this->db->query($q);
     return $query->result();
   }
 

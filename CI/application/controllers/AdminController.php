@@ -51,23 +51,21 @@ class AdminController extends CI_Controller
     );
 
     if ($role_karyawan == 'Admin') {
-      $dataCreateUser;
+      $this->adminModel->createUser1($dataCreateUser);
     } else if ($role_karyawan == 'Karyawan'){
-      $dataCreateUser;
-      $dataCreateKaryawan;
+      $this->adminModel->createUser1($dataCreateUser);
+      $this->adminModel->createUser2($dataCreateKaryawan);
     } else if ($role_karyawan == 'Finance'){
-      $dataCreateUser;
-      $dataCreateFinance;
+      $this->adminModel->createUser1($dataCreateUser);
+      $this->adminModel->createUser3($dataCreateFinance);
     }
-
-    $this->adminModel->createUser1($dataCreateUser);
-    $this->adminModel->createUser2($dataCreateKaryawan);
-    $this->adminModel->createUser3($dataCreateFinance);
+    redirect('AdminController');
   }
 
   public function hapusUser($id_user)
   {
     $this->adminModel->deleteUser($id_user);
+    redirect('AdminController');
   }
 
   public function logout()
