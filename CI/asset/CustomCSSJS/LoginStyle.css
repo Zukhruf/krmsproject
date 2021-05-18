@@ -47,8 +47,8 @@ html, body {
 }
 .field-icon {
   float: right;
-  margin-left: -35px;
-  margin-top: 20px;
+  margin-left: -33px;
+  margin-top: 22px;
   position: relative;
   z-index: 2;
 }
