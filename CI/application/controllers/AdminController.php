@@ -30,7 +30,8 @@ class AdminController extends CI_Controller
     $username_karyawan = $this->input->post('username_karyawan');
     $password = $this->input->post('password_karyawan');
     $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
-    $q = "SELECT id_user from USER WHERE username = '$username_karyawan'";
+    $q= "SELECT id_user from USER WHERE username = '$username_karyawan'";
+    $query = $this->db->query($q);
 
     $dataCreateUser =
       array(
@@ -39,7 +40,7 @@ class AdminController extends CI_Controller
     );
 
     $dataCreateKaryawan =
-      array('id_user'=> $q,'nama_karyawan' => $nama_karyawan,
+      array('id_user'=> $query,'nama_karyawan' => $nama_karyawan,
       'unit_kerja_karyawan' => $unit_kerja_karyawan, 'no_telp_karyawan' => $no_telp_karyawan,
       'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin,
       'alamat_karyawan' => $alamat_karyawan, 'email_karyawan' => $email_karyawan
