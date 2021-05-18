@@ -23,6 +23,7 @@ class FinanceModel extends CI_Model
   {
     // code...
     //where id =?
+    
   }
 
   //Update Status REIMBURSEMENT
@@ -30,6 +31,7 @@ class FinanceModel extends CI_Model
   {
     // code...
     //where id =?
+
   }
 
   public function validateFinance($username)
@@ -47,7 +49,7 @@ class FinanceModel extends CI_Model
   public function deleteReimbursement($id_reimbursement)
   {
     // code...
-    
+    $this->db->delete('reimbursement', array('id_reimbursement' => $id_reimbursement));
   }
 }
 
