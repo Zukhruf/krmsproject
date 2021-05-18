@@ -69,7 +69,7 @@ class adminModel extends CI_Model
   {
     // code...
     $q = "SELECT * FROM user WHERE is_deleted = 0"
-    $query = $this->db->get($q);
+    $query = $this->db->query($q);
     return $query->result();
   }
 
