@@ -46,9 +46,9 @@ class adminModel extends CI_Model
   public function deleteUser($username_user)
   {
     // code...
-    $q = "UPDATE user set is_deleted = 1 WHERE id_user = '".$username_user."'";
-    $this->db->query($q);
-    redirect('AdminController');
+    $d = array('is_deleted' = 1)
+    $this->db->where('username_user', $username_user);
+    $this->db->update('user', $d);
   }
 
   //Update Karyawan
