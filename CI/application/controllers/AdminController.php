@@ -49,7 +49,7 @@ class AdminController extends CI_Controller
         );
     } else if ($role_karyawan == 'Karyawan'){
       $dataCreateUser =
-        array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan,
+        array('nama_karyawan' => $nama_karyawan,
               'unit_kerja_karyawan' => $unit_kerja_karyawan,
               'no_telp_karyawan' => $no_telp_karyawan,
               'jenis_kelamin' => $jenis_kelamin,
