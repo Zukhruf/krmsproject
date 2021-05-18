@@ -43,7 +43,8 @@ class AdminController extends CI_Controller
 
     if ($role_karyawan == 'Admin') {
       $dataCreateUser =
-        array('username' => $username_karyawan,
+        array('role' => $role_karyawan,
+              'username' => $username_karyawan,
               'password' => $password_karyawan
         );
     } else if ($role_karyawan == 'Karyawan'){
@@ -58,6 +59,7 @@ class AdminController extends CI_Controller
     } else if ($role_karyawan == 'Finance'){
       $dataCreateUser =
         array('nama_karyawan' => $nama_karyawan,
+              'role' => $role_karyawan,
               'username' => $username_karyawan,
               'password' => $password_karyawan
       );
