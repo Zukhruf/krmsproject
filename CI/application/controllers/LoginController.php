@@ -21,6 +21,7 @@ class LoginController extends CI_Controller {
     $username = $this->input->post('username');
     $password = $this->input->post('password');
     if ($this->adminModel->validateAdmin($username, $password)) {
+	  setcookie("message", "Maaf, Username atau Password salah", time()+3600);
       redirect('AdminController');
     } else if ($this->KaryawanModel->checkKaryawan($username, $password)) {
 			redirect('KaryawanController');
