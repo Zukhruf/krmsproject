@@ -12,8 +12,8 @@ class adminModel extends CI_Model
 
   //Check Admin
   public function validateAdmin($username, $password)
-  {
-    $query = $this->db->get_where('user', array('username' => $username, 'role' => 'Admin'));
+  { $d = array('username' => $username, 'role' => 'Admin', 'is_deleted' => 0 );
+    $query = $this->db->get_where('user', $d);
     if ($query->num_rows()>0) {
       $this->session->set_userdata('username', $username);
       return TRUE;
