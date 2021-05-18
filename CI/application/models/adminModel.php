@@ -29,12 +29,7 @@ class adminModel extends CI_Model
     $this->db->insert('user', $dataCreateUser);
   }
   
-  //Create Karyawan
-  public function createUser($dataCreateKaryawan)
-  {
-    // code...
-    $this->db->insert('karyawan', $dataCreateKaryawan);
-  }
+  
 
   //Create Finance
   public function createUser($dataCreateFinance)
