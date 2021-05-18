@@ -28,9 +28,10 @@
             <label for="inputUsername">Username</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" name="password">
-            <label for="InputPassword">Password</label>
-            <span toggle="#password" class="fa w-25 btn fa-fw fa-eye field-icon toggle-password"></span>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+              <input type="password" class="form-control" id="password" name="password">
+              <label for="InputPassword">Password</label>
+              <span toggle="#password" class="fa w-20 btn fa-fw fa-eye field-icon toggle-password"></span>
           </div>
           <div class="checkbox mb-3">
             <label>
