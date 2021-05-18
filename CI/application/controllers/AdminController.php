@@ -24,7 +24,7 @@ class AdminController extends CI_Controller
     $no_telp_karyawan = $this->input->post('no_telp_karyawan');
     $tanggal_lahir = $this->input->post('tanggal_lahir');
     $jenis_kelamin = $this->input->post('jenis_kelamin');
-    $alamat_karyawan = $this->input->post('alamat');
+    $alamat_karyawan = $this->input->post('alamat_karyawan');
     $email_karyawan = $this->input->post('email_karyawan');
     $role_karyawan = $this->input->post('role_karyawan');
     $username_karyawan = $this->input->post('username_karyawan');
