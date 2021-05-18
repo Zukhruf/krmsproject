@@ -68,7 +68,7 @@ class adminModel extends CI_Model
   public function readListUser()
   {
     // code...
-    $q = "SELECT * FROM user WHERE is_deleted = 0"
+    $q = "SELECT * FROM user WHERE is_deleted = 0";
     $query = $this->db->query($q);
     return $query->result();
   }
