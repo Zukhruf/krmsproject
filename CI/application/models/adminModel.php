@@ -43,11 +43,11 @@ class adminModel extends CI_Model
 
 
   //Delete Karyawan
-  public function deleteUser($username_user)
+  public function deleteUser($id_user)
   {
     // code...
     $d = array('is_deleted' => 1);
-    $this->db->where('username_user', $username_user);
+    $this->db->where('id_user', $id_user);
     $this->db->update('user', $d);
   }
 
@@ -59,7 +59,7 @@ class adminModel extends CI_Model
               'password_user' => $password_user,
               'role_user' => $role_user
     );
-    $this->db->where('username_user', $username_user);
+    $this->db->where('id_user', $username_user);
     $this->db->update('user', $data);
   }
 
