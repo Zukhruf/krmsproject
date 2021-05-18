@@ -32,7 +32,6 @@ class adminModel extends CI_Model
   public function createUser2($dataCreateKaryawan)
   {
     // code...
-    $q ="SELECT MAX(id_user) from USER WHERE role = 'Karyawan'";
     $this->db->insert('karyawan', $dataCreateKaryawan);
   }
 
