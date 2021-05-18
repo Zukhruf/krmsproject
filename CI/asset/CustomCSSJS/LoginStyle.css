@@ -48,8 +48,6 @@ html, body {
 .icon-sec{
   position:absolute;
   top:0;
-  left:10px;
-  bottom:0;
-  background:red;
+  bottom:3;
   width:20px;
 }
