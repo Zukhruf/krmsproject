@@ -108,6 +108,12 @@
                       </select>
                     </div>
                     <div class="mb-3">
+                      <label for="IDKaryawan" class="col-md col-form-label">ID Karyawan <span class="red-star">*</span></label>
+                      <div class="col-md">
+                        <input type="text" name="id_karyawan" value="" class="form-control" id="IDKaryawan" placeholder="Masukkan ID karyawan">
+                      </div>
+                    </div>
+                    <div class="mb-3">
                       <label for="NamaKaryawan" class="col-md col-form-label">Nama Karyawan <span class="red-star">*</span></label>
                       <div class="col-md">
                         <input type="text" name="nama_karyawan" value="" class="form-control" id="NamaKaryawan" placeholder="Masukkan nama karyawan">

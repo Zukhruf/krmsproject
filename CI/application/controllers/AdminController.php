@@ -19,6 +19,7 @@ class AdminController extends CI_Controller
   public function createUser()
   {
     // code...
+    $id_karyawan = $this->input->post('id_karyawan');
     $nama_karyawan = $this->input->post('nama_karyawan');
     $unit_kerja_karyawan = $this->input->post('unit_kerja_karyawan');
     $no_telp_karyawan = $this->input->post('no_telp_karyawan');
@@ -30,24 +31,23 @@ class AdminController extends CI_Controller
     $username_karyawan = $this->input->post('username_karyawan');
     $password = $this->input->post('password_karyawan');
     $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
-    $q= "SELECT max(id_user) from USER WHERE role ='".$role_karyawan."'";
-    $query = $this->db->query($q);
 
     $dataCreateUser =
       array(
+        'id_user' => $id_karyawan,
         'role' => $role_karyawan,
         'password' => $password_karyawan,'username' => $username_karyawan
     );
 
     $dataCreateKaryawan =
-      array('id_user'=> $query,'nama_karyawan' => $nama_karyawan,
+      array('id_user'=> $id_karyawan,'nama_karyawan' => $nama_karyawan,
       'unit_kerja_karyawan' => $unit_kerja_karyawan, 'no_telp_karyawan' => $no_telp_karyawan,
       'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin,
       'alamat_karyawan' => $alamat_karyawan, 'email_karyawan' => $email_karyawan
     );
 
     $dataCreateFinance =
-      array('nama' => $nama_karyawan
+      array('id_user' => $id_karyawan,'nama' => $nama_karyawan
     );
 
     if ($role_karyawan == 'Admin') {
