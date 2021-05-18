@@ -128,3 +128,30 @@ body {
   border-radius: 20px;
   border-style: solid;
 }
+
+.table-custom thead {
+  background-color: #F1F1F1;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.trash-button {
+  color: #E20000;
+}
+
+.table-custom {
+  border: 1px solid #F1F1F1;
+  border-radius: 25px;
+}
+
+.modal {
+  overflow: auto !important;
+}
+
+.red-star {
+  color: #FF0000;
+}
+
+.field-icon {
+  z-index: 2;
+  color:#fe7b00;
+}

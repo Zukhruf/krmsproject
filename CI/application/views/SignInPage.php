@@ -24,12 +24,14 @@
         <h1 class="h3 mb-3 text-center" id="SignInText">Sign In</h1>
         <form action="<?php echo base_url().'index.php/LoginController/checkUser'; ?>" method="post">
           <div class="form-floating">
-            <input type="text" class="form-control" id="InputUsername">
+            <input type="text" class="form-control" id="username" name="username">
             <label for="inputUsername">Username</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="InputPassword">
-            <label for="InputPassword">Password</label>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+              <input type="password" class="form-control" id="password" name="password">
+              <label for="InputPassword">Password</label>
+              <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
           </div>
           <div class="checkbox mb-3">
             <label>
@@ -42,4 +44,16 @@
       </main>
     </body>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script>
+	$(".toggle-password").click(function() {
+		$(this).toggleClass("fa-eye fa-eye-slash");
+		var input = $($(this).attr("toggle"));
+		if (input.attr("type") == "password") {
+			input.attr("type", "text");
+		} else {
+			input.attr("type", "password");
+		}
+	});
+</script>
 </html>
