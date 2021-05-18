@@ -30,7 +30,7 @@
           <div class="form-floating mb-3">
             <input type="password" id="password" name="password">
             <label for="InputPassword">Password</label>
-            <span toggle="#password" class="fa-eye btn field-icon toggle-password"></span>
+            <span toggle="#password" class="btn fa fa-fw fa-eye field-icon toggle-password"></span>
           </div>
           <div class="checkbox mb-3">
             <label>
