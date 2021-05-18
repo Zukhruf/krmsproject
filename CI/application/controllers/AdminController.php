@@ -32,7 +32,7 @@ class AdminController extends CI_Controller
     $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
 
     $dataCreateUser =
-      array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan,
+      array('nama_karyawan' => $nama_karyawan,
         'unit_kerja_karyawan' => $unit_kerja_karyawan, 'no_telp_karyawan' => $no_telp_karyawan,
         'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin,
         'alamat_karyawan' => $alamat_karyawan,
@@ -48,7 +48,7 @@ class AdminController extends CI_Controller
         );
     } else if ($role_karyawan == 'Karyawan'){
       $dataCreateUser =
-        array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan,
+        array('nama_karyawan' => $nama_karyawan,
               'unit_kerja_karyawan' => $unit_kerja_karyawan,
               'no_telp_karyawan' => $no_telp_karyawan,
               'jenis_kelamin' => $jenis_kelamin,
@@ -57,8 +57,10 @@ class AdminController extends CI_Controller
       );
     } else if ($role_karyawan == 'Finance'){
       $dataCreateUser =
-        array('id_user' => $id_karyawan, 'nama_karyawan' => $nama_karyawan
-        )
+        array('role' => $role_karyawan,
+        'username' => $username_karyawan,
+        'password' => $password_karyawan
+      );
     }
 
     $this->adminModel->createUser($dataCreateUser);
