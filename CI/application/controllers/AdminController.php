@@ -65,10 +65,6 @@ class AdminController extends CI_Controller
     $this->adminModel->createUser3($dataCreateFinance);
   }
 
-  public function createKaryawan()
-  {
-
-  }
   public function hapusUser($id_user)
   {
     $this->adminModel->deleteUser($id_user);
