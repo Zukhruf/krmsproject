@@ -47,11 +47,6 @@ html, body {
 }
 
 .field-icon {
-  float: right;
-  margin-left: -30px;
-  padding-right: 5px;
-  margin-top: 10px;
-  position: relative;
   z-index: 2;
   color:#fe7b00;
 }
