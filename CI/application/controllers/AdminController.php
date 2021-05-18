@@ -33,7 +33,7 @@ class AdminController extends CI_Controller
 
     $dataCreateUser =
       array(
-        'role_karyawan' => $role_karyawan,
+        'role' => $role_karyawan,
         'password_karyawan' => $password_karyawan,'username' => $username_karyawan
     );
 
@@ -63,6 +63,10 @@ class AdminController extends CI_Controller
     $this->adminModel->createUser($dataCreateFinance);
   }
 
+  public function createKaryawan()
+  {
+
+  }
   public function hapusUser($id_user)
   {
     $this->adminModel->deleteUser($id_user);
