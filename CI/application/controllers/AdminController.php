@@ -34,7 +34,7 @@ class AdminController extends CI_Controller
     $dataCreateUser =
       array(
         'role' => $role_karyawan,
-        'password_karyawan' => $password_karyawan,'username' => $username_karyawan
+        'password' => $password_karyawan,'username' => $username_karyawan
     );
 
     $dataCreateKaryawan =
@@ -45,7 +45,7 @@ class AdminController extends CI_Controller
     );
 
     $dataCreateFinance =
-      array('nama_karyawan' => $nama_karyawan
+      array('nama' => $nama_karyawan
     );
 
     if ($role_karyawan == 'Admin') {
@@ -58,9 +58,9 @@ class AdminController extends CI_Controller
       $dataCreateFinance;
     }
 
-    $this->adminModel->createUser($dataCreateUser);
-    $this->adminModel->createUser($dataCreateKaryawan);
-    $this->adminModel->createUser($dataCreateFinance);
+    $this->adminModel->createUser1($dataCreateUser);
+    $this->adminModel->createUser2($dataCreateKaryawan);
+    $this->adminModel->createUser3($dataCreateFinance);
   }
 
   public function createKaryawan()
