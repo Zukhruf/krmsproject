@@ -27,18 +27,21 @@ class adminModel extends CI_Model
   {
     // code...
     $this->db->insert('user', $dataCreateUser);
+    redirect('AdminController');
   }
 
   public function createUser2($dataCreateKaryawan)
   {
     // code...
     $this->db->insert('karyawan', $dataCreateKaryawan);
+    redirect('AdminController');
   }
 
   public function createUser3($dataCreateFinance)
   {
     // code...
     $this->db->insert('finance', $dataCreateFinance);
+    redirect('AdminController');
   }
   
 
