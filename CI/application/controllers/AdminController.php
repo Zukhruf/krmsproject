@@ -19,7 +19,6 @@ class AdminController extends CI_Controller
   public function createUser()
   {
     // code...
-    $id_karyawan = $this->input->post('id_karyawan');
     $nama_karyawan = $this->input->post('nama_karyawan');
     $unit_kerja_karyawan = $this->input->post('unit_kerja_karyawan');
     $no_telp_karyawan = $this->input->post('no_telp_karyawan');
