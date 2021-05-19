@@ -64,7 +64,7 @@ class KaryawanModel extends CI_Model
   public function getIDUser($username)
   {
     // code...
-    $this->db->select('id_user');
+    $this->db->select('id_user','role');
     $this->db->where('username', $username);
     $query = $this->db->get('user');
     $return = $query->row_array();

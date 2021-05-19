@@ -26,7 +26,7 @@ class KaryawanController extends CI_Controller
     $result['reimbursementList'] = $this->KaryawanModel->readReimbursementListFromKaryawan($id_user);
     $this->load->view('Karyawan', $result);
   }
-
+  
   public function createReimbursement($id_user)
   {
     // code...

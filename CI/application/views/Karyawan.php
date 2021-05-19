@@ -32,7 +32,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {Role}, <?php echo $this->session->userdata('username'); ?>
+              {Role}, <?php echo $this->session->userdata('username'); ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2"></i>Ubah Password</a></li>
