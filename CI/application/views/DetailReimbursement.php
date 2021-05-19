@@ -17,7 +17,7 @@
     <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-light" id="navbarHeader">
       <div class="container-fluid">
-        <a class="navbar-brand ms-2" id="logoColor" href="#">KRMS</a>
+        <a class="navbar-brand ms-2" id="logoColor" href="#"><img src="<?php echo base_url()."asset/Icon&IllustrationKRMS/Logo_Krms.svg" ?>" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarCollapseContent"
         aria-controls="navbarCollapseContent" aria-expanded="false"
@@ -107,7 +107,7 @@
       <form action="<?php echo base_url()."KaryawanController/createReimbursement/".$this->session->userdata('id_user');?>" method="post">
         <div class="modal fade" id="modalEditReimbursement">
           <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content rounded-1">
+            <div class="modal-content rounded-4">
               <div class="modal-header" id="modalHeader">
                 <h5 class="modal-title ms-3">Edit Reimbursement</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -191,6 +191,7 @@
           </div>
         </div>
       </form>
+      <!--Modal Foto Resize-->
       <div class="modal fade" id="modalLihatFoto1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content rounded-4">

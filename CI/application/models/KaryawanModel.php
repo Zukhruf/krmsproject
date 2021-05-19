@@ -55,6 +55,7 @@ class KaryawanModel extends CI_Model
     $query = $this->db->get_where('user', $d);
     if ($query->num_rows()>0) {
       $this->session->set_userdata('username', $username);
+      $this->session->set_userdata('role', 'Karyawan');
       return TRUE;
     } else {
       return FALSE;
