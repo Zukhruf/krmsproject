@@ -27,7 +27,7 @@ class KaryawanController extends CI_Controller
     $result['reimbursementList'] = $this->KaryawanModel->readReimbursementListFromKaryawan($id_user);
     $this->load->view('Karyawan', $result);
   }
-
+  
   public function createReimbursement($id_user)
   {
     // code...
@@ -40,6 +40,10 @@ class KaryawanController extends CI_Controller
     $foto_bukti1 = $this->input->post('filePhoto1');
     $foto_bukti2 = $this->input->post('filePhoto2');
     $foto_bukti3 = $this->input->post('filePhoto3');
+    $photo_bukti1 = $this->upload->data();
+    $photo1 = $photo_bukti1['file_name'];
+    echo $photo1;
+    print_r($photo1);
 
     $photo_bukti1 = $this->upload->data();
     $photo1 = $photo_bukti1['file_name'];
@@ -66,6 +70,7 @@ class KaryawanController extends CI_Controller
   {
     // code...
     $this->KaryawanModel->deleteReimbursement($id_reimbursement);
+    redirect('KaryawanController');
   }
 
   public function readReimbursement($id_reimbursement)

@@ -22,7 +22,7 @@ class KaryawanModel extends CI_Model
   public function readReimbursementListFromKaryawan($id_user)
   {
     // code...
-    $query = $this->db->get_where('reimbursement', array('id_user' => $id_user));
+    $query = $this->db->get_where('reimbursement', array('id_user' => $id_user, 'is_deleted' => 0));
     return $query->result();
   }
 
@@ -30,8 +30,9 @@ class KaryawanModel extends CI_Model
   public function deleteReimbursement($id_reimbursement)
   {
     // code...
-    $this->db->delete('reimbursement', array('id_reimbursement' => $id_reimbursement));
-    redirect('KaryawanController');
+    $d = array('is_deleted' => 1);
+    $this->db->where('id_reimbursement', $id_reimbursement);
+    $this->db->update('reimbursement', $d);
   }
 
   //Update REIMBURSEMENT
@@ -50,7 +51,8 @@ class KaryawanModel extends CI_Model
   public function checkKaryawan($username, $password)
   {
     // code...
-    $query = $this->db->get_where('user', array('username' => $username));
+    $d = array('username' => $username, 'password' => md5($password), 'role' => 'Karyawan', 'is_deleted' => 0 );
+    $query = $this->db->get_where('user', $d);
     if ($query->num_rows()>0) {
       $this->session->set_userdata('username', $username);
       return TRUE;
@@ -62,7 +64,7 @@ class KaryawanModel extends CI_Model
   public function getIDUser($username)
   {
     // code...
-    $this->db->select('id_user');
+    $this->db->select('id_user','role');
     $this->db->where('username', $username);
     $query = $this->db->get('user');
     $return = $query->row_array();
