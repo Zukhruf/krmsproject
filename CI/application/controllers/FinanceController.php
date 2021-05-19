@@ -109,9 +109,8 @@ class FinanceController extends CI_Controller
 
   public function generateLaporan()
   {
-    // code...
-    header("Content-type: application/vnd-ms-excel");
-    header("Content-Disposition: attachment; filename=RekapReimbursement.xls");
+    $data['reimbursements'] = $this->FinanceModel->readListReimbursement();
+    $this->load->view('ExportLaporan', $data);
   }
 }
 
