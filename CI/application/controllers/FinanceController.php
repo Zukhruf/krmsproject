@@ -15,6 +15,27 @@ class FinanceController extends CI_Controller
   {
     // code...
     $data['reimbursements'] = $this->FinanceModel->readListReimbursement();
+    //Get Finance ID User
+    $idUserFinance = $this->FinanceModel->getFinanceIdUser($this->session->userdata('username'));
+    $id_user_finance = $idUserFinance['id_user'];
+
+    //Get Finance ID Finance
+    $idFinance = $this->FinanceModel->getFinanceIdFinance($id_user_finance);
+    $id_finance = $idFinance['id_finance'];
+    $this->session->set_userdata('id_finance',$id_finance);
+
+    //Get count Valid
+    $data['validCount'] = $this->FinanceModel->getValidCount();
+    //Get count Tidak Valid
+    $data['tidakValidCount'] = $this->FinanceModel->getTidakValidCount();
+    //Get count Pending
+    $data['pendingCount'] = $this->FinanceModel->getPendingCount();
+    //Get count Menunggu Verifikasi
+    $data['menungguVerifikasiCount'] = $this->FinanceModel->getMenungguVerifikasiCount();
+    //Get count Selesai
+    $data['selesaiCount'] = $this->FinanceModel->getSelesaiCount();
+
+    //View Finance Page
     $this->load->view('Finance', $data);
   }
 
@@ -24,16 +45,59 @@ class FinanceController extends CI_Controller
     $this->FinanceModel->deleteReimbursement($id_reimbursement);
   }
 
-  public function updateStatus($id_reimbursement)
+  public function updateReimbursement($id_reimbursement)
   {
     // code...
-    $this->FinanceModel->updateStatusReimbursement($id_reimbursement);
+    $nama_reimbursement = $this->input->post('nama_reimbursement');
+    $kategori_reimbursement = $this->input->post('kategori_reimbursement');
+    $deskripsi_reimbursement = $this->input->post('deskripsi_reimbursement');
+    $tanggal_pembelian = $this->input->post('tanggal_pembelian');
+    $nominal_pembelian = $this->input->post('nominal_pembelian');
+    $status_reimbursement = $this->input->post('status_reimbursement');
+    $id_finance = $this->session->userdata('id_finance');
+
+    $tanggal_valid;
+    $tanggal_tidak_valid;
+    $tanggal_pending;
+    $tanggal_selesai;
+
+    date_default_timezone_set('Asia/Bangkok');
+    $tanggal_now = date("Y-m-d H:i:s");
+
+    if (condition) {
+      // code...
+    }
+
+    if ($status_reimbursement == 'Valid') {
+      // code...
+      $tanggal_valid = date("Y-m-d H:i:s");
+    }
+
+    if ($status_reimbursement == 'Tidak_valid'){
+      $tanggal_tidak_valid = date("Y-m-d H:i:s");
+    }
+
+    $dataUpdateReimbursement = array('nama_reimbursement' => $nama_reimbursement,
+      'jenis_reimbursement' => $kategori_reimbursement,
+      'deskripsi_reimbursement' => $deskripsi_reimbursement,
+      'tanggal_pembelian' => $tanggal_pembelian,
+      'jumlah_reimbursement' => $nominal_pembelian,
+      'status_reimbursement' => $status_reimbursement,
+      'id_finance' => $id_finance,
+      'tanggal_selesai' => $tanggal_selesai,
+      'tanggal_pending' => $tanggal_pending,
+      'tanggal_valid' => $tanggal_valid,
+      'tanggal_tidak_valid' => $tanggal_tidak_valid
+    );
+
+    $this->FinanceModel->updateReimbursement($id_reimbursement, $dataUpdateReimbursement);
   }
 
-  public function editReimbursement($id_reimbursement)
+  public function viewReimbursement($id_reimbursement)
   {
     // code...
-    $this->FinanceModel->editReimbursement($id_reimbursement);
+    $result['reimbursement'] = $this->FinanceModel->viewReimbursement($id_reimbursement);
+    $this->load->view('DetailReimbursementFinance', $result);
   }
 
   public function logout()
@@ -43,6 +107,12 @@ class FinanceController extends CI_Controller
     redirect('LoginController');
   }
 
+  public function generateLaporan()
+  {
+    // code...
+    header("Content-type: application/vnd-ms-excel");
+    header("Content-Disposition: attachment; filename=RekapReimbursement.xls");
+  }
 }
 
 

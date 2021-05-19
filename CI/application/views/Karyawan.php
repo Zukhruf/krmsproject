@@ -18,7 +18,7 @@
     <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-light" id="navbarHeader">
       <div class="container-fluid">
-        <a class="navbar-brand ms-2" id="logoColor" href="#">KRMS</a>
+        <a class="navbar-brand ms-2" id="logoColor" href="#"><img src="<?php echo base_url()."asset/Icon&IllustrationKRMS/Logo_Krms.svg" ?>" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarCollapseContent"
         aria-controls="navbarCollapseContent" aria-expanded="false"
@@ -32,7 +32,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {Role}, <?php echo $this->session->userdata('username'); ?>
+                <?php echo $this->session->userdata('role'); ?>, <?php echo $this->session->userdata('username'); ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2"></i>Ubah Password</a></li>

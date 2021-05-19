@@ -17,7 +17,7 @@
     <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-light" id="navbarHeader">
       <div class="container-fluid">
-        <a class="navbar-brand ms-2" id="logoColor" href="#">KRMS</a>
+        <a class="navbar-brand ms-2" id="logoColor" href="#"><img src="<?php echo base_url()."asset/Icon&IllustrationKRMS/Logo_Krms.svg" ?>" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarCollapseContent"
         aria-controls="navbarCollapseContent" aria-expanded="false"
@@ -31,7 +31,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {Role}, <?php echo $this->session->userdata('username_finance'); ?>
+                <?php echo $this->session->userdata('role'); ?>, <?php echo $this->session->userdata('username'); ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2"></i>Ubah Password</a></li>
@@ -43,11 +43,52 @@
       </div>
     </nav>
     <!--Body-->
+    <div class="d-flex">
+      <div class="container ms-auto me-auto" id="bodyContent">
+        <div class="d-flex ms-auto me-auto">
+          <div class="d-flex ms-5 me-auto">
+            <img src="<?php echo base_url()."asset/IconFlaticon/hourglass.png"; ?>" alt="" width="75px" height="75px" class="hourglassLogo">
+            <div class="col">
+              <h5 class="h5 ms-3 me-2">Menunggu Konfirmasi</h5>
+              <h3 class="h2 ms-3"><?php echo $menungguVerifikasiCount ?></h3>
+            </div>
+          </div>
+          <div class="d-flex ms-5 me-5">
+            <img src="<?php echo base_url()."asset/IconFlaticon/clock.png"; ?>" alt="" width="75px" height="75px" class="clockLogo">
+            <div class="col">
+              <h5 class="h5 ms-3 me-2">Pending</h5>
+              <h3 class="h2 ms-3"><?php echo $pendingCount; ?></h3>
+            </div>
+          </div>
+          <div class="d-flex ms-5 me-auto">
+            <img src="<?php echo base_url()."asset/IconFlaticon/checked.png"; ?>" alt="" width="75px" height="75px" class="checkLogo">
+            <div class="col">
+              <h5 class="h5 ms-3 me-2">Valid</h5>
+              <h3 class="h2 ms-3"><?php echo $validCount; ?></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid ms-auto me-2" id="bodyContent">
+        <div class="d-flex">
+          <div class="ms-auto me-auto">
+            <div class="ms-auto me-3">
+              <h5 class="h5">Tidak Valid</h5>
+              <p class="h5"><?php echo $tidakValidCount; ?></p>
+            </div>
+            <div class="ms-auto me-3">
+              <h5 class="h5">Selesai</h5>
+              <p class="h5"><?php echo $selesaiCount; ?></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container-fluid ms-auto me-auto" id="bodyContent">
       <h1 class="h3" id="HeaderDaftarReimbursement">Daftar Reimbursement</h1>
       <!--Button Upper-->
       <div class="d-flex" id="buttonContentUpper">
-        <button type="button" class="btn rounded btn-outline-primary me-2 mb-2 shadow" name="button">Buat Laporan (.xls)</button>
+        <a href="<?php echo base_url().'index.php/FinanceController/generateLaporan'; ?>"><button type="button" class="btn rounded btn-outline-primary me-2 mb-2 shadow" name="button">Buat Laporan (.xls)</button></a>
         <form class="col-md-3 me-2" action="" method="post" id="">
           <div class="">
             <input type="text" name="" class="form-control" value="" placeholder="&#xF002; Cari ID Reimbursement, nama pembelian">
@@ -166,6 +207,7 @@
               <th scope="col">ID Reimbursement</th>
               <th scope="col">ID User</th>
               <th scope="col">Nama Reimbursement</th>
+              <th scope="col">Tanggal Pembelian</th>
               <th scope="col">Tanggal Reimbursement</th>
               <th scope="col">Kategori</th>
               <th scope="col">Nominal</th>
@@ -178,10 +220,13 @@
             <?php foreach ($reimbursements as $reimbursement) : ?>
               <tr>
                 <td><?php echo $i; ?></td>
-                <td><?php echo $reimbursement->id_reimbursement; ?></td>
+                <td><a href="<?php echo "FinanceController/viewReimbursement/".$reimbursement->id_reimbursement; ?>"><?php echo $reimbursement->id_reimbursement; ?></a></td>
                 <td><?php echo $reimbursement->id_user; ?></td>
                 <td><?php echo $reimbursement->nama_reimbursement; ?></td>
-                <td><?php echo $reimbursement->tanggal_pengajuan; ?></td>
+                <?php $datePembelian = date_create($reimbursement->tanggal_pembelian); ?>
+                <td><?php echo date_format($datePembelian, "l, d F Y"); ?></td>
+                <?php $datePengajuan = date_create($reimbursement->tanggal_pengajuan); ?>
+                <td><?php echo date_format($datePengajuan, "l, d F Y"); ?></td>
                 <td><?php echo $reimbursement->jenis_reimbursement; ?></td>
                 <td><?php echo $reimbursement->jumlah_reimbursement; ?></td>
                 <td><?php echo $reimbursement->status_reimbursement; ?></td>
@@ -262,7 +307,7 @@
               <div class="modal-footer">
                 <div class="d-flex">
                   <button type="button" class="btn btn-confirmation rounded btn-outline-primary me-2 mb-2 shadow" name="button"><i class="fas fa-times me-2"></i>Batal</button>
-                  <button type="submit" class="btn btn-confirmation rounded btn-outline-primary me-2 mb-2 shadow" name="button"><i class="fas fa-check me-2"></i>Simpan</button>
+                  <a href="<?php echo base_url()."index.php/FinanceController/updateReimbursement/"; ?>"><button type="submit" class="btn btn-confirmation rounded btn-outline-primary me-2 mb-2 shadow" name="button"><i class="fas fa-check me-2"></i>Simpan</button></a>
                 </div>
               </div>
             </form>

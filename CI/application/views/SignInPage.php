@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="<?php echo base_url()."asset/CustomCSSJS/LoginStyle.css" ?>">
     <title>Reimbursement Management System</title>
   </head>
-  <img src="<?php echo base_url()."asset/Pict/alesia-kazantceva-VWcPlbHglYc-unsplash.jpg"; ?>" style="width: 50%; height: 100%">
+  <div class="container-fluid" style="position: relative; left: 0; top: 0;">
+    <img src="<?php echo base_url()."asset/Icon&IllustrationKRMS/Icon&IllustrationKRMS/BackgroundLogin.svg"; ?>" alt="" style="width: 100%; height: 100%; position: relative; top: 0; left: 0; z-index: 1;">
+    <img src="<?php echo base_url()."asset/Icon&IllustrationKRMS/Icon&IllustrationKRMS/IllustrationLogin.svg"; ?>" style="width: 100%; height: 80%; z-index: 3; position:absolute; top:60px; left:5px;">
+  </div>
   <div class="container-fluid">
     <body class="d-flex">
       <div class="headingPage text-center">

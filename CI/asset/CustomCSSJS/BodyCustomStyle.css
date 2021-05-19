@@ -155,3 +155,15 @@ body {
   z-index: 2;
   color:#fe7b00;
 }
+
+.hourglassLogo {
+  color: #777777;
+}
+
+.checkLogo {
+  color: #0095BE;
+}
+
+.clockLogo {
+  color: #F0BF00;
+}

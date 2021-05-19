@@ -50,9 +50,10 @@ class KaryawanModel extends CI_Model
   public function checkKaryawan($username, $password)
   {
     // code...
-    $query = $this->db->get_where('user', array('username' => $username));
+    $query = $this->db->get_where('user', array('username' => $username, 'role' => 'Karyawan'));
     if ($query->num_rows()>0) {
       $this->session->set_userdata('username', $username);
+      $this->session->set_userdata('role', 'Karyawan');
       return TRUE;
     } else {
       return FALSE;
