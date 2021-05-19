@@ -70,7 +70,6 @@ class KaryawanModel extends CI_Model
     $return = $query->row_array();
     return $return;
   }
-
 }
 
 
