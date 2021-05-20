@@ -15,9 +15,16 @@ class KaryawanModel extends CI_Model
   {
     // code...
     $this->db->insert('reimbursement', $dataReimbursement);
-    redirect('KaryawanController');
   }
 
+  //get id_reimbursement
+  public function getidreimbursement(){
+  $q= "select max(id_reimbursement) from reimbursement";
+  $query = $this->db->query($q);
+  $row = $query->row_array();
+  $row = $row['max(id_reimbursement)'];
+  return $row;
+  }
   //Get 1 REIMBURSEMENT
   public function readReimbursementListFromKaryawan($id_user)
   {
@@ -35,10 +42,13 @@ class KaryawanModel extends CI_Model
     $this->db->update('reimbursement', $d);
   }
 
-  //Update REIMBURSEMENT
-  public function updateReimbursement($id_reimbursement)
+  //Edit REIMBURSEMENT
+  public function editReimbursement($id_reimbursement,$d)
   {
     // code...
+  
+    $this->db->where('id_reimbursement', $id_reimbursement);
+    $this->db->update('reimbursement', $d);
   }
 
   public function readReimbursement($id_reimbursement)
@@ -64,7 +74,7 @@ class KaryawanModel extends CI_Model
   public function getIDUser($username)
   {
     // code...
-    $this->db->select('id_user','role');
+    $this->db->select('id_user');
     $this->db->where('username', $username);
     $query = $this->db->get('user');
     $return = $query->row_array();

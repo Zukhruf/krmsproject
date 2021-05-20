@@ -22,6 +22,7 @@ class FinanceController extends CI_Controller
   {
     // code...
     $this->FinanceModel->deleteReimbursement($id_reimbursement);
+    redirect('FinanceController');
   }
 
   public function updateStatus($id_reimbursement)

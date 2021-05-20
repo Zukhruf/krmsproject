@@ -14,7 +14,8 @@ class FinanceModel extends CI_Model
   public function readListReimbursement()
   {
     // code...
-    $query = $this->db->get('reimbursement');
+    $q = "SELECT * FROM reimbursement WHERE is_deleted = 0";
+    $query = $this->db->query($q);
     return $query->result();
   }
 
@@ -50,7 +51,9 @@ class FinanceModel extends CI_Model
   public function deleteReimbursement($id_reimbursement)
   {
     // code...
-    $this->db->delete('reimbursement', array('id_reimbursement' => $id_reimbursement));
+    $d = array('is_deleted' => 1);
+    $this->db->where('id_reimbursement', $id_reimbursement);
+    $this->db->update('reimbursement', $d);
   }
 }
 

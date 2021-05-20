@@ -77,9 +77,9 @@
               <p>Nominal pembelian    : <?php echo $detail->jumlah_reimbursement; ?></p>
               <p>Bukti : </p>
               <div class="d-flex">
-                <a href="#" data-bs-target="#modalLihatFoto1" data-bs-toggle="modal"><img src="data:image/jpeg;base64,<?php echo base64_encode($detail->bukti_reimbursement); ?>" alt="" width="80px" height="80px" class="me-2 rounded"></a>
-                <a href="#" data-bs-target="" data-bs-toggle=""><img src="data:image/jpeg;base64,<?php echo base64_encode($detail->bukti_reimbursement2); ?>" alt="" width="80px" height="80px" class="me-2 rounded"></a>
-                <a href="#" data-bs-target="" data-bs-toggle=""><img src="data:image/jpeg;base64,<?php echo base64_encode($detail->bukti_reimbursement3); ?>" alt="" width="80px" height="80px" class="me-2 rounded"></a>
+                <a href="#" data-bs-target="#modalLihatFoto1" data-bs-toggle="modal"><img src="<?php echo base_url()?>asset/Pict/<?php echo $detail->bukti_reimbursement?>" alt="" width="80px" height="80px" class="me-2 rounded"></a>
+                <a href="#" data-bs-target="#modalLihatFoto2" data-bs-toggle="modal"><img src="<?php echo base_url()?>asset/Pict/<?php echo $detail->bukti_reimbursement2?>" alt="" width="80px" height="80px" class="me-2 rounded"></a>
+                <a href="#" data-bs-target="#modalLihatFoto3" data-bs-toggle="modal"><img src="<?php echo base_url()?>asset/Pict/<?php echo $detail->bukti_reimbursement3?>" alt="" width="80px" height="80px" class="me-2 rounded"></a>
               </div>
             </div>
           </div>
@@ -103,8 +103,9 @@
           </div>
         </div>
       </div>
-      <!--Modal Foto Resize-->
-      <form action="<?php echo base_url()."KaryawanController/createReimbursement/".$this->session->userdata('id_user');?>" method="post">
+
+      <!--Create Reimbursement-->
+      <form action="<?php echo base_url()."index.php/KaryawanController/editReimbursement/".$detail->id_reimbursement;?>" method="post">
         <div class="modal fade" id="modalEditReimbursement">
           <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content rounded-1">
@@ -195,7 +196,8 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content rounded-4">
             <div class="modal-body text-center">
-              <img src="data:image/jpeg;base64,<?php echo base64_encode($detail->bukti_reimbursement); ?>" alt="" width="550px" height="550px" class="me-2 rounded">
+              <img src="<?php echo base_url()?>asset/Pict/<?php echo $detail->bukti_reimbursement?>" alt="" width="550px" height="550px" class="me-2 rounded">
+
             </div>
           </div>
         </div>
@@ -204,7 +206,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content rounded-4">
             <div class="modal-body text-center">
-              <img src="data:image/jpeg;base64,<?php echo base64_encode($detail->bukti_reimbursement2); ?>" alt="" width="550px" height="550px" class="me-2 rounded">
+              <img src="<?php echo base_url()?>asset/Pict/<?php echo $detail->bukti_reimbursement2?>" alt="" width="550px" height="550px" class="me-2 rounded">
             </div>
           </div>
         </div>
@@ -213,7 +215,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content rounded-4">
             <div class="modal-body text-center">
-              <img src="data:image/jpeg;base64,<?php echo base64_encode($detail->bukti_reimbursement3); ?>" alt="" width="550px" height="550px" class="me-2 rounded">
+              <img src="<?php echo base_url()?>asset/Pict/<?php echo $detail->bukti_reimbursement3?>" alt="" width="550px" height="550px" class="me-2 rounded">
             </div>
           </div>
         </div>
