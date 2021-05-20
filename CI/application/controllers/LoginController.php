@@ -6,7 +6,7 @@ class LoginController extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('adminModel');
+		$this->load->model('AdminModel');
 		$this->load->model('KaryawanModel');
 		$this->load->model('FinanceModel');
 	}
@@ -20,7 +20,7 @@ class LoginController extends CI_Controller {
   {
     $username = $this->input->post('username');
     $password = $this->input->post('password');
-    if ($this->adminModel->validateAdmin($username, $password)) {
+    if ($this->AdminModel->validateAdmin($username, $password)) {
       redirect('AdminController');
     } else if ($this->KaryawanModel->checkKaryawan($username, $password)) {
 			redirect('KaryawanController');
