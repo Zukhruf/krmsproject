@@ -7,12 +7,12 @@ class AdminController extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('adminModel');
+    $this->load->model('AdminModel');
   }
 
   public function index()
   {
-    $result['dataResult'] = $this->adminModel->readListUser();
+    $result['dataResult'] = $this->AdminModel->readListUser();
     $this->load->view('Admin', $result);
   }
 
