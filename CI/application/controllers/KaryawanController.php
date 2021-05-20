@@ -9,6 +9,16 @@ class KaryawanController extends CI_Controller
   {
     parent::__construct();
     $this->load->model('KaryawanModel');
+<<<<<<< HEAD
+=======
+
+    $config['upload_path'] = './uploads/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']     = '100';
+    $config['max_width'] = '1024';
+    $config['max_height'] = '768';
+    $this->load->library('upload', $config);
+>>>>>>> 453181b7a34091aabf4703d21394d9d78cf919c4
   }
 
   public function index()
