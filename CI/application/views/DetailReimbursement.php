@@ -103,6 +103,7 @@
           </div>
         </div>
       </div>
+
       <!--Create Reimbursement-->
       <form action="<?php echo base_url()."KaryawanController/createReimbursement/".$this->session->userdata('id_user');?>" method="post">
         <div class="modal fade" id="modalEditReimbursement">
@@ -196,6 +197,7 @@
           <div class="modal-content rounded-4">
             <div class="modal-body text-center">
               <img src="<?php echo base_url()?>asset/Pict/<?php echo $detail->bukti_reimbursement?>" alt="" width="550px" height="550px" class="me-2 rounded">
+
             </div>
           </div>
         </div>

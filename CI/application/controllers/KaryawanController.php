@@ -9,13 +9,6 @@ class KaryawanController extends CI_Controller
   {
     parent::__construct();
     $this->load->model('KaryawanModel');
-    #$this->load->helper('url');
-    // $config['upload_path'] = './uploads/';
-    // $config['allowed_types'] = 'gif|jpg|png';
-    // $config['max_size']     = '100000';
-    // $config['max_width'] = '1024';
-    // $config['max_height'] = '768';
-    // $this->load->library('upload', $config);
   }
 
   public function index()
@@ -39,7 +32,7 @@ class KaryawanController extends CI_Controller
     $tgl_pembelian = $this->input->post('tanggal_pembelian');
     $kategori_reimbursement = $this->input->post('kategori_reimbursement');
     $nominal_pembelian = $this->input->post('nominal_pembelian');
-
+    
     //variable
     $ids = $this->KaryawanModel->getidreimbursement();
     $bukti = "".++$ids."-B";
@@ -117,7 +110,6 @@ class KaryawanController extends CI_Controller
             'bukti_reimbursement2' => $nama_bukti2, 'bukti_reimbursement3' => $nama_bukti3,
             'status_reimbursement' => 'Menunggu Verifikasi'
           );
-
           $this->KaryawanModel->createReimbursement($dataReimbursement);
 
           $namabukti  = preg_split("/\./", $nama_bukti1);
@@ -180,6 +172,7 @@ class KaryawanController extends CI_Controller
     print($image);
     
   }
+
 
   public function logout()
   {
