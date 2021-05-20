@@ -46,6 +46,10 @@ class KaryawanModel extends CI_Model
   public function updateReimbursement($id_reimbursement)
   {
     // code...
+    // code...
+    // $d = array();
+    // $this->db->where('id_reimbursement', $id_reimbursement);
+    // $this->db->update('reimbursement', $d);
   }
 
   public function readReimbursement($id_reimbursement)
