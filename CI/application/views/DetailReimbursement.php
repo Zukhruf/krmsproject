@@ -105,7 +105,7 @@
       </div>
 
       <!--Create Reimbursement-->
-      <form action="<?php echo base_url()."KaryawanController/createReimbursement/".$this->session->userdata('id_user');?>" method="post">
+      <form action="<?php echo base_url()."index.php/KaryawanController/editReimbursement/".$detail->id_reimbursement;?>" method="post">
         <div class="modal fade" id="modalEditReimbursement">
           <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content rounded-1">
