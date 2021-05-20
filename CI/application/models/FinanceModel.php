@@ -36,10 +36,11 @@ class FinanceModel extends CI_Model
     redirect('FinanceController');
   }
 
-  public function validateFinance($username)
+  public function validateFinance($username, $password)
   {
     // code...
-    $query = $this->db->get_where('user', array('username' => $username, 'role' => 'Finance'));
+    $d = array('username' => $username, 'password' => md5($password), 'role' => 'Finance', 'is_deleted' => 0 );
+    $query = $this->db->get_where('user', $d);
     if ($query->num_rows()>0) {
       $this->session->set_userdata('username', $username);
       $this->session->set_userdata('role', 'Finance');

@@ -12,8 +12,8 @@ class AdminModel extends CI_Model
 
   //Check Admin
   public function validateAdmin($username, $password)
-  {
-    $query = $this->db->get_where('user', array('username' => $username, 'role' => 'Admin'));
+  { $d = array('username' => $username, 'password' => md5($password),'role' => 'Admin', 'is_deleted' => 0 );
+    $query = $this->db->get_where('user', $d);
     if ($query->num_rows()>0) {
       $this->session->set_userdata('username', $username);
       $this->session->set_userdata('role', 'Admin');
@@ -44,13 +44,12 @@ class AdminModel extends CI_Model
 
 
   //Delete Karyawan
-  public function deleteUser($username_user)
+  public function deleteUser($id_user)
   {
     // code...
-    $this->db->delete('user', array('id_user' => $username_user));
-    $this->db->delete('karyawan', array('id_user' => $username_user));
-    $this->db->delete('finance', array('id_user' => $username_user));
-    redirect('AdminController');
+    $d = array('is_deleted' => 1);
+    $this->db->where('id_user', $id_user);
+    $this->db->update('user', $d);
   }
 
   //Update Karyawan
@@ -61,7 +60,7 @@ class AdminModel extends CI_Model
               'password_user' => $password_user,
               'role_user' => $role_user
     );
-    $this->db->where('username_user', $username_user);
+    $this->db->where('id_user', $username_user);
     $this->db->update('user', $data);
   }
 
@@ -69,7 +68,8 @@ class AdminModel extends CI_Model
   public function readListUser()
   {
     // code...
-    $query = $this->db->get('user');
+    $q = "SELECT * FROM user WHERE is_deleted = 0";
+    $query = $this->db->query($q);
     return $query->result();
   }
 

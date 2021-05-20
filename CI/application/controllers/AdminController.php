@@ -30,7 +30,7 @@ class AdminController extends CI_Controller
     $role_karyawan = $this->input->post('role_karyawan');
     $username_karyawan = $this->input->post('username_karyawan');
     $password = $this->input->post('password_karyawan');
-    $password_karyawan = password_hash($password, PASSWORD_DEFAULT);
+    $password_karyawan = md5($password);
 
     $dataCreateUser =
       array(
@@ -65,6 +65,7 @@ class AdminController extends CI_Controller
   public function hapusUser($id_user)
   {
     $this->adminModel->deleteUser($id_user);
+    redirect('AdminController');
   }
 
   public function logout()

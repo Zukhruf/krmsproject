@@ -25,6 +25,8 @@
       </div>
       <main class="mainForm">
         <h1 class="h3 mb-3 text-center" id="SignInText">Sign In</h1>
+        <!-- cek pesan notifikasi -->
+        <?= isset($_SESSION['p']) ? $_SESSION['p'] : "" ?>
         <form action="<?php echo base_url().'index.php/LoginController/checkUser'; ?>" method="post">
           <div class="form-floating">
             <input type="text" class="form-control" id="username" name="username">

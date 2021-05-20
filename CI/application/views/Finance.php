@@ -319,6 +319,17 @@
           </div>
         </div>
       </div>
-    <!--Footer-->
+    <!-- footer -->
+    </br></br></br>
+    <footer>
+      <div class="container text-center mb-3">
+        <div class="row">
+          <div class="col-sm-12">
+            <p>&copy; Copyright 2021 | KRMS All Right Reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer -->
   </body>
 </html>
