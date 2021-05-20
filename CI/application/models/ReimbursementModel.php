@@ -56,6 +56,30 @@ class ReimbursementModel extends CI_Model
     // code...
   }
 }
+  //Get Image REIMBURSEMENT
+  public function getImage($id_reimbursement){
+    $q = "select bukti_reimbursement FROM reimbursement where id_reimbursement = '".$id_reimbursement."'"
+    $query = $this->db->query($q);
+    $row = $query->row_array();
+    $row = $row['bukti_reimbursement']
+    #$row = mysqli_fetch_array($query);
+    $query -> free_result();
+    
+    #header("Content-type: " . $row["bukti_reimbursement"]);
+    #echo $row["bukti_reimbursement"];
+    
+    // foreach($query->result_array() as $sq){
+    //   //header('Content-type: image');
+    //    $bukti_reimbursement = $sq['bukti_reimbursement']; 
+    //  }
+    //  //header("Content-type: image/*");
+    //  echo $bukti_reimbursement;
 
+
+    
+    
+
+  }
+  
 
 ?>
